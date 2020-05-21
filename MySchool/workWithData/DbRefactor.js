@@ -104,7 +104,6 @@ class DbRefactor {
         this.closeConnection()
     }
 
-
 }
 
 let generator = new Generator()
