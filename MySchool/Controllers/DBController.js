@@ -101,3 +101,5 @@ class DBController {
         return true
     }
 }
+
+module.exports.DBController = DBController;

@@ -1,118 +1,83 @@
-import Generator from "/Controllers"
-
-const mysql = require("mysql2");
-const dbConfig = require("../config/db.config.js");
 
 class DbRefactor {
-    connectToDb(){
-            this.connection = mysql.createConnection({
-            host: dbConfig.HOST,
-            user: dbConfig.USER,
-            password: dbConfig.PASSWORD,
-            database: dbConfig.DB
-        });
-
-        this.connection.connect(function(err){
-            if (err) {
-                return console.error("Ошибка: " + err.message);
-            }
-            else{
-                console.log("Подключение к серверу MySQL успешно установлено");
-            }
-        });
-    }
-
-    closeConnection(){
-        this.connection.end(function(err) {
-            if (err) {
-                return console.log("Ошибка: " + err.message);
-            }
-            console.log("Подключение закрыто");
-        });
-    }
 
     addUser(user) {
-        this.connectToDb()
+        let connection = connectToDb()
 
-        const sql = `INSERT INTO users(idUser, idUserInfo, role_idrole,class_idclass) VALUES(user.id, user.info, user.role, user.class)`;
+        const sql = `INSERT INTO users(idUser, idUserInfo, role_idrole,class_idclass) VALUES(user.id, user.info,
+         user.role, user.class)`;
 
-        this.connection.query(sql, function(err, results) {
+        connection.query(sql, function(err, results) {
             if(err) console.log(err);
             console.log(results);
         });
-        this.closeConnection()
+        closeConnection(connection)
     }
 
     addInfo(info){
-        this.connectToDb()
+        let connection = connectToDb()
 
         const sql = `INSERT INTO users_info(iduserInfo, name, date) VALUES(info.id, info.firstName + info.SecondName,
          info.date)`;
 
-        this.connection.query(sql, function(err, results) {
+        connection.query(sql, function(err, results) {
             if(err) console.log(err);
             console.log(results);
         });
-        this.closeConnection()
+        closeConnection(connection)
     }
 
     addRole(role){
-        this.connectToDb()
+        let connection = connectToDb()
 
         const sql = `INSERT INTO role(idrole, post) VALUES(role.id, role.position)`;
 
-        this.connection.query(sql, function(err, results) {
+        connection.query(sql, function(err, results) {
             if(err) console.log(err);
             console.log(results);
         });
-        this.closeConnection()
+        closeConnection(connection)
     }
 
     addClass(thisClass){
-        this.connectToDb()
+        let connection = connectToDb()
 
         const sql = `INSERT INTO class(idclass, Name, schedule_idschedule, tasks) VALUES(class.id, class.name,
          class.schedule, class.tasks)`;
 
-        this.connection.query(sql, function(err, results) {
+        connection.query(sql, function(err, results) {
             if(err) console.log(err);
             console.log(results);
         });
-        this.closeConnection()
+        closeConnection(connection)
     }
 
     addSchedule(schedule){
-        this.connectToDb()
+        let connection = connectToDb()
         const sql = `INSERT INTO schedule(idschedule) VALUES(schedule.id)`;
 
-        this.connection.query(sql, function(err, results) {
+        connection.query(sql, function(err, results) {
             if(err) console.log(err);
             console.log(results);
         });
-        this.closeConnection()
+        closeConnection(connection)
     }
 
     addTask(task){
-        this.connectToDb()
+        let connection = connectToDb()
 
         const sql = `INSERT INTO class(idtask, deadline, text) VALUES(task.id, task.deadline, task.text)`;
 
-        this.connection.query(sql, function(err, results) {
+        connection.query(sql, function(err, results) {
             if(err) console.log(err);
             console.log(results);
         });
-        this.closeConnection()
+        closeConnection(connection)
     }
-
 }
 
-let generator = new Generator()
-let db = new DbRefactor()
-db.addUser(new User(1,2,3,4))
-db.addInfo(new Info("Test", "Second", new Date(2000,0,0), 2))
-db.addRole(new Role(3, "dev"))
-db.addClass(new Class(5,"1-B", 6, "7"))
-db.addSchedule(new Schedule(5))
-db.addTask(new Task(7,new Date(), "Done!"))
+let generator = require('../Controllers/Generator')
+
+
 console.log(generator.generateId())
 
