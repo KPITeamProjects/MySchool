@@ -26,3 +26,5 @@ class Book {
         this._description = value;
     }
 }
+
+module.exports.Book = Book

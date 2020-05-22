@@ -28,3 +28,6 @@ function closeConnection(connection){
         console.log("Подключение закрыто");
     });
 }
+
+module.exports.connect=connectToDb
+module.exports.disconnect = closeConnection

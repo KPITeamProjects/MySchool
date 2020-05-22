@@ -1,21 +1,26 @@
+let connector = require('./Connector.js')
 
 class DbRefactor {
 
-    addUser(user) {
-        let connection = connectToDb()
+    static addUser(user) {
+        let connection = connector.connect()
 
-        const sql = `INSERT INTO users(idUser, idUserInfo, role_idrole,class_idclass) VALUES(user.id, user.info,
-         user.role, user.class)`;
+        let id = user.id
+        let info = user.info
+        let role = user.role
+        let class_id = user.classId
 
-        connection.query(sql, function(err, results) {
+        const sql = `INSERT INTO users(idUser, idUserInfo, role_idrole,class_idclass) VALUES(?,?,?,?)`;
+
+        connection.query(sql,[id,info,role,class_id], function(err, results) {
             if(err) console.log(err);
             console.log(results);
         });
-        closeConnection(connection)
+        connector.disconnect(connection)
     }
 
     addInfo(info){
-        let connection = connectToDb()
+        let connection = connector.connect()
 
         const sql = `INSERT INTO users_info(iduserInfo, name, date) VALUES(info.id, info.firstName + info.SecondName,
          info.date)`;
@@ -24,11 +29,11 @@ class DbRefactor {
             if(err) console.log(err);
             console.log(results);
         });
-        closeConnection(connection)
+        connector.disconnect(connection)
     }
 
     addRole(role){
-        let connection = connectToDb()
+        let connection = connector.connect()
 
         const sql = `INSERT INTO role(idrole, post) VALUES(role.id, role.position)`;
 
@@ -36,11 +41,11 @@ class DbRefactor {
             if(err) console.log(err);
             console.log(results);
         });
-        closeConnection(connection)
+        connector.disconnect(connection)
     }
 
     addClass(thisClass){
-        let connection = connectToDb()
+        let connection = connector.connect()
 
         const sql = `INSERT INTO class(idclass, Name, schedule_idschedule, tasks) VALUES(class.id, class.name,
          class.schedule, class.tasks)`;
@@ -49,22 +54,22 @@ class DbRefactor {
             if(err) console.log(err);
             console.log(results);
         });
-        closeConnection(connection)
+        connector.disconnect(connection)
     }
 
     addSchedule(schedule){
-        let connection = connectToDb()
+        let connection = connector.connect()
         const sql = `INSERT INTO schedule(idschedule) VALUES(schedule.id)`;
 
         connection.query(sql, function(err, results) {
             if(err) console.log(err);
             console.log(results);
         });
-        closeConnection(connection)
+        connector.disconnect(connection)
     }
 
     addTask(task){
-        let connection = connectToDb()
+        let connection = connector.connect()
 
         const sql = `INSERT INTO class(idtask, deadline, text) VALUES(task.id, task.deadline, task.text)`;
 
@@ -72,12 +77,10 @@ class DbRefactor {
             if(err) console.log(err);
             console.log(results);
         });
-        closeConnection(connection)
+        connector.disconnect(connection)
     }
 }
 
-let generator = require('../Controllers/Generator')
+module.exports.Refactor = DbRefactor
 
-
-console.log(generator.generateId())
 
