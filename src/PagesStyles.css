@@ -1,0 +1,224 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+li, a{
+    font-family: "Microsoft JhengHei", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+ }
+header{
+    flex: 0 0 auto;
+    height: 90px;
+    background-color: deepskyblue;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20%;
+}
+.logo{
+    cursor: pointer;
+    font-family: "Microsoft JhengHei", sans-serif;
+    font-size: 40px;
+    color: white;
+    margin-right: auto;
+}
+.navigation{
+    list-style: none;
+}
+.navigation li{
+    display: inline-block;
+    padding: 0 20px;
+}
+.navigation li a{
+    color: white;
+    text-decoration: none;
+}
+
+.cta img{
+    width: 50px;
+    border-radius: 50px;
+}
+body{
+    width: 100%;
+}
+.body{
+    font-family: "Microsoft JhengHei", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inherit-body{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+.inherit-body img{
+    width: 100%;
+    height: inherit;
+}
+.inherit-body-cab {
+     margin-top: 10px;
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+     width: 50%;
+    text-decoration: none;
+}
+.inherit-body-cab img{
+    border-radius: 110px;
+    width: 30%;
+}
+.about-user{
+    margin-right: 40px;
+    text-decoration: none;
+    text-align: right;
+    list-style: none;
+}
+.about-user li{
+    color: deepskyblue;
+    font-size: 25px;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+.mark-holder{
+    width: 150px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: 50px;
+    color: deepskyblue;
+    font-family: "Microsoft JhengHei", sans-serif;
+    font-size: 20px;
+}
+.mark-holder span{
+    color: deepskyblue;
+    font-family: "Microsoft JhengHei", sans-serif;
+    font-size: 40px;
+}
+
+#myTable{
+    width: 100%;
+    margin-top: 5vh;
+}
+#myTable tr{
+    width: 100%;
+}
+#myTable tr td{
+    background-color: deepskyblue;
+    text-align: center;
+    width: 17%;
+    padding: 10px;
+    empty-cells: hide;
+    font-family: "Microsoft JhengHei", sans-serif;
+    height: 70px;
+    color: white;
+    font-size: 2.5vh;
+}
+#myTable th{
+    width: 17%;
+    padding: 10px;
+    background-color: white;
+    font-size: 3vh;
+    font-weight: bold;
+    color: deepskyblue;
+    height: 70px;
+}
+#marks{
+    justify-content: flex-start;
+    width: 100%;
+    text-align: center;
+    background-color: deepskyblue;
+
+}
+#marks tr{
+    width: 100%;
+}
+#marks tr td{
+    background-color: deepskyblue;
+    text-align: center;
+    width: 10px;
+    padding: 5px;
+    font-family: "Microsoft JhengHei", sans-serif;
+    height: 10px;
+    color: white;
+    font-size: 2vh;
+}
+#marks th{
+    width: 10px;
+    padding: 5px;
+    background-color: white;
+    font-size: 2.75vh;
+    color: deepskyblue;
+    height: 20px;
+    font-weight: normal;
+}
+.inherit-body_marks{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+}
+#to-do{
+    width: 100%;
+    background-color: crimson;
+}
+#to-do tr{
+    width: 100%;
+
+}
+#to-do th{
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    background-color: white;
+    font-size: 2.75vh;
+    color: crimson;
+    height: 20px;
+    font-weight: normal;
+}
+#to-do td{
+    width: 100%;
+    height: 100px;
+    text-align: left;
+    font-size: 20px;
+    font-family: "Microsoft JhengHei", sans-serif;
+    color: white;
+    padding: 10px;
+    vertical-align: top;
+}
+#to-do2{
+    width: 100%;
+    background-color: deepskyblue;
+}
+#to-do2 tr{
+    width: 100%;
+
+}
+#to-do2 th{
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    font-size: 2.75vh;
+    color: deepskyblue;
+    height: 20px;
+    font-weight: normal;
+}
+#to-do2 td{
+    width: 100%;
+    height: 100px;
+    text-align: left;
+    font-size: 20px;
+    font-family: "Microsoft JhengHei", sans-serif;
+    color: white;
+    padding: 10px;
+    vertical-align: top;
+}
+
