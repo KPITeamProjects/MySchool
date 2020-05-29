@@ -1,4 +1,4 @@
-class File {
+module.exports = class File {
 
     constructor(id) {
         this._id = id;

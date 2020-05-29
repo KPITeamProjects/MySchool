@@ -1,6 +1,6 @@
 let generator = require('./Controllers/Generator')
 let refactor = require('./workWithData/DbRefactor').Refactor
-let user = require('./dbPrototypes/User')
+let user = require('./models/User')
 
 let user_id = generator.generateId()
 let user_info_id = generator.generateId()
