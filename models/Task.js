@@ -89,7 +89,7 @@ module.exports.getTasksForStudent = function (studentId, callback) {
  * @return callback function
  */
 module.exports.getAllTasksByCourse = function (courseId, callback) {
-    connection.query('SELECT * FROM  marks WHERE courseId=?',courseId,function(err, results){
+    connection.query('SELECT * FROM  tasks WHERE courseId=?',courseId,function(err, results){
         callback(results[0], err)
     });
 }
@@ -99,13 +99,13 @@ module.exports.getAllTasksByCourse = function (courseId, callback) {
  */
 
 function getAllDoneTasksForStudent(studentId, callback) {
-    connection.query('SELECT * FROM  marks WHERE studentId=?, progress=Done',studentId,function(err, results){
+    connection.query('SELECT * FROM  tasks WHERE progress=1',function(err, results){
         callback(results, err)
     });
 }
 
 function getUnfulfilledTasksForUser(studentId, callback){
-    connection.query('SELECT * FROM  marks WHERE studentId=?, progress=NULL',studentId,function(err, results){
+    connection.query('SELECT * FROM  tasks WHERE studentId=?, progress=0',studentId,function(err, results){
         callback(results, err)
     });
 }
@@ -142,5 +142,5 @@ module.exports.makeTableUnfulfilledTasksForUser = function(studentId,callback){
     })
 }
 
-module.exports.getAllDoneTasksForStudent = getAllDoneTasksForStudent()
-module.exports.getUnfulfilledTasksForUser = getUnfulfilledTasksForUser()
+module.exports.getAllDoneTasksForStudent = getAllDoneTasksForStudent
+module.exports.getUnfulfilledTasksForUser = getUnfulfilledTasksForUser
