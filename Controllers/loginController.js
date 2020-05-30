@@ -17,8 +17,7 @@ module.exports.checkForUser = function (request, response) {
     user.getUserByMail(login(),function (info, err) {
         if (err) alert("error login or password") ;
         if (password.equals(password)){
-            response.redirect('/'+info.id)
+            response.redirect("/student/" + info.id + "/cabinet")
         }
     })
-
 }

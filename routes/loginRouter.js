@@ -6,7 +6,5 @@ var loginController = require('../Controllers/loginController')
 loginRouter.get('/', loginController.login);
 loginRouter.get('/register', loginController.register)
 
-
-
 document.getElementById("enter").onclick = loginController.checkForUser
 
