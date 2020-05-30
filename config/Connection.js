@@ -1,7 +1,7 @@
-let mysql = require('mysql');
+let mysql = require('mysql2');
 const dbConfig = require("./db.config");
 
-module.exports = mysql.createPool({
+module.exports.connection = mysql.createConnection({
 
     host: dbConfig.HOST,
     user: dbConfig.USER,

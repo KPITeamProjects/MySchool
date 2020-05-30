@@ -1,4 +1,4 @@
-const pool = require("../config/Connection")
+const connection = require("../config/Connection").connection
 
 module.exports.User = class User {
     constructor(id, info, role, classId, email, photo) {
@@ -38,28 +38,28 @@ module.exports.editPassword = function(newPassword, id){
 }
 
 module.exports.getAllUsers = function () {
-    pool.query('SELECT * FROM users',function(err, results){
+    connection.query('SELECT * FROM users',function(err, results){
         if (err) throw err;
         return results
     });
 }
 
-module.exports.getUser = function (id) {
-    pool.query('SELECT * FROM users WHERE idUser=?',id,function(err, results){
-        if (err) throw err;
-        return results
+module.exports.getUser = function (id, callback) {
+
+    connection.query('SELECT * FROM users WHERE idUser=?',id, function(err, results){
+        callback(results[0],err)
     });
 }
 
 module.exports.getUserInfoId = function (id) {
-    pool.query('SELECT idUserInfo FROM users WHERE idUser=?',id,function(err, results){
+    connection.query('SELECT idUserInfo FROM users WHERE idUser=?',id,function(err, results){
         if (err) throw err;
         return results
     });
 }
 
 module.exports.getUserPhoto = function (id) {
-    pool.query('SELECT photo FROM users WHERE idUser=?',id,function(err, results){
+    connection.query('SELECT photo FROM users WHERE idUser=?',id,function(err, results){
         if (err) throw err;
         return results
     });
@@ -67,7 +67,7 @@ module.exports.getUserPhoto = function (id) {
 
 function completeScript(script,data) {
 
-    pool.query(script,data, function(err, results) {
+    connection.query(script,data, function(err, results) {
         if(err) throw err;
         console.log(results);
     });
