@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: exports</title>
+    <title>JSDoc: Class: Mark</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: exports</h1>
+    <h1 class="page-title">Class: Mark</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">(id, deadline, text, progress, studentId, courseId)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Mark<span class="signature">(id, value, date, notes, courseId, studentId, teacherId)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Class representing a task.</div>
+            <div class="class-description">Class representing a mark.</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="exports"><span class="type-signature"></span>new exports<span class="signature">(id, deadline, text, progress, studentId, courseId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Mark"><span class="type-signature"></span>new Mark<span class="signature">(id, value, date, notes, courseId, studentId, teacherId)</span><span class="type-signature"></span></h4>
     
 
     
@@ -53,7 +53,7 @@
 
 
 <div class="description">
-    Create a task.
+    Create a class.
 </div>
 
 
@@ -112,7 +112,30 @@
 
         <tr>
             
-                <td class="name"><code>deadline</code></td>
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The mark value.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
             
 
             <td class="type">
@@ -128,14 +151,14 @@
 
             
 
-            <td class="description last">The deadline date value.</td>
+            <td class="description last">The date value.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>text</code></td>
+                <td class="name"><code>notes</code></td>
             
 
             <td class="type">
@@ -151,20 +174,20 @@
 
             
 
-            <td class="description last">The task text value.</td>
+            <td class="description last">The notes value.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>progress</code></td>
+                <td class="name"><code>courseId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -174,7 +197,7 @@
 
             
 
-            <td class="description last">The task description value.</td>
+            <td class="description last">The courseId value.</td>
         </tr>
 
     
@@ -204,7 +227,7 @@
 
         <tr>
             
-                <td class="name"><code>courseId</code></td>
+                <td class="name"><code>teacherId</code></td>
             
 
             <td class="type">
@@ -220,7 +243,7 @@
 
             
 
-            <td class="description last">The courseId value.</td>
+            <td class="description last">The teacherId value.</td>
         </tr>
 
     
@@ -261,7 +284,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Task.js.html">Task.js</a>, <a href="Task.js.html#line13">line 13</a>
+        <a href="Mark.js.html">Mark.js</a>, <a href="Mark.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -323,13 +346,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#editTaskDeadline">editTaskDeadline</a></li><li><a href="global.html#editTaskText">editTaskText</a></li><li><a href="global.html#getAllTasksByCourse">getAllTasksByCourse</a></li><li><a href="global.html#getTasksForStudent">getTasksForStudent</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Mark.html">Mark</a></li><li><a href="MarkConfig.html">MarkConfig</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addMark">addMark</a></li><li><a href="global.html#calculateMiddleMark">calculateMiddleMark</a></li><li><a href="global.html#configMarksTableForUser">configMarksTableForUser</a></li><li><a href="global.html#editMarkCourseId">editMarkCourseId</a></li><li><a href="global.html#editMarkDate">editMarkDate</a></li><li><a href="global.html#editMarkNotes">editMarkNotes</a></li><li><a href="global.html#editMarkStudentId">editMarkStudentId</a></li><li><a href="global.html#editMarkTeacherId">editMarkTeacherId</a></li><li><a href="global.html#editMarkValue">editMarkValue</a></li><li><a href="global.html#getAllMarksOfByCourse">getAllMarksOfByCourse</a></li><li><a href="global.html#getAllMarksOfStudentByCourse">getAllMarksOfStudentByCourse</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat May 30 2020 20:24:46 GMT+0300 (GMT+03:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat May 30 2020 20:23:57 GMT+0300 (GMT+03:00)
 </footer>
 
 <script> prettyPrint(); </script>

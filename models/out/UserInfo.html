@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: exports</title>
+    <title>JSDoc: Class: UserInfo</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: exports</h1>
+    <h1 class="page-title">Class: UserInfo</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">(id, deadline, text, progress, studentId, courseId)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>UserInfo<span class="signature">(id, name, date, user_id)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Class representing a task.</div>
+            <div class="class-description">Class representing a userInfo.</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="exports"><span class="type-signature"></span>new exports<span class="signature">(id, deadline, text, progress, studentId, courseId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="UserInfo"><span class="type-signature"></span>new UserInfo<span class="signature">(id, name, date, user_id)</span><span class="type-signature"></span></h4>
     
 
     
@@ -53,7 +53,7 @@
 
 
 <div class="description">
-    Create a task.
+    Create a class.
 </div>
 
 
@@ -112,7 +112,30 @@
 
         <tr>
             
-                <td class="name"><code>deadline</code></td>
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The class name value.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
             
 
             <td class="type">
@@ -128,60 +151,14 @@
 
             
 
-            <td class="description last">The deadline date value.</td>
+            <td class="description last">The date value.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>text</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The task text value.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>progress</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The task description value.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>studentId</code></td>
+                <td class="name"><code>user_id</code></td>
             
 
             <td class="type">
@@ -197,30 +174,7 @@
 
             
 
-            <td class="description last">The studentId value.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>courseId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The courseId value.</td>
+            <td class="description last">The userId value.</td>
         </tr>
 
     
@@ -261,7 +215,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Task.js.html">Task.js</a>, <a href="Task.js.html#line13">line 13</a>
+        <a href="UserInfo.js.html">UserInfo.js</a>, <a href="UserInfo.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -299,6 +253,13 @@
     
 
     
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="UserInfo.html">UserInfo</a></dt>
+            <dd></dd>
+        </dl>
+    
 
     
 
@@ -323,13 +284,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#editTaskDeadline">editTaskDeadline</a></li><li><a href="global.html#editTaskText">editTaskText</a></li><li><a href="global.html#getAllTasksByCourse">getAllTasksByCourse</a></li><li><a href="global.html#getTasksForStudent">getTasksForStudent</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="UserInfo.html">UserInfo</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUserInfo">addUserInfo</a></li><li><a href="global.html#changeUserDate">changeUserDate</a></li><li><a href="global.html#changeUserName">changeUserName</a></li><li><a href="global.html#getUserInfo">getUserInfo</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat May 30 2020 20:24:46 GMT+0300 (GMT+03:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat May 30 2020 20:24:58 GMT+0300 (GMT+03:00)
 </footer>
 
 <script> prettyPrint(); </script>
