@@ -3,9 +3,11 @@ const mark = require('../models/Mark')
 let mysql = require('mysql');
 const dbConfig = require("../config/db.config");
 
-test('should return mark value for user1: 9', () =>
+
+test('should return all marks for user1: 9, 11', () =>
     mark.getAllMarksOfStudent(1, function (info, err) {
-        expect(info.value, 9)
+        console.log(info)
+        expect(info.value, 9, 11)
     }),
 )
 
