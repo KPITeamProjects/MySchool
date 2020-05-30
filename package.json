@@ -2,9 +2,11 @@
   "name": "myschool",
   "version": "0.0.0",
   "private": true,
+  "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
-    "test_db": "node workWithData/DbRefactor.js"
+    "test_db": "node workWithData/DbRefactor.js",
+    "test": "mocha models/test/template.js"
   },
   "dependencies": {
     "clean-css": ">=4.1.11",
@@ -17,10 +19,11 @@
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
-    "pug": "2.0.0-beta11",
+    "pug": "^3.0.0",
     "sequelize": "^5.21.10"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "mocha": "^7.2.0"
   }
 }
