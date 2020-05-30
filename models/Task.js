@@ -1,4 +1,15 @@
 const connection = require("../config/Connection").connection
+
+class TaskForm{
+
+    constructor(deadline,text, subject) {
+        this.deadline = deadline
+        this.text = text
+        this.subject = subject
+    }
+}
+
+
 /** Class representing a task. */
 module.exports = class Task {
     /**
@@ -86,6 +97,19 @@ module.exports.getAllTasksByCourse = function (courseId, callback) {
  * Delete task from data base.
  * @return void
  */
+
+function getAllDoneTasksForStudent(studentId, callback) {
+    connection.query('SELECT * FROM  marks WHERE studentId=?, progress=Done',studentId,function(err, results){
+        callback(results, err)
+    });
+}
+
+function getUnfulfilledTasksForUser(studentId, callback){
+    connection.query('SELECT * FROM  marks WHERE studentId=?, progress=NULL',studentId,function(err, results){
+        callback(results, err)
+    });
+}
+
 module.exports.deleteTask = function (id) {
     const sql = 'DELETE FROM tasks WHERE idtask=?'
     connection.query(sql,id, function(err, results) {
@@ -93,3 +117,30 @@ module.exports.deleteTask = function (id) {
         console.log(results);
     });
 }
+
+module.exports.makeTableWithDoneTasks = function(studentId,callback){
+    getAllDoneTasksForStudent(studentId, function (tasks, err) {
+        let table = []
+        tasks.forEach(task =>
+            course.getNameOfTheCourse(task.courseId, function (course,err) {
+                table.push(new TaskForm(task.deadline, task.text, course[0].info))
+            })
+        )
+        callback(table)
+    })
+}
+
+module.exports.makeTableUnfulfilledTasksForUser = function(studentId,callback){
+    getUnfulfilledTasksForUser(studentId, function (tasks, err) {
+        let table = []
+        tasks.forEach(task =>
+            course.getNameOfTheCourse(task.courseId, function (course,err) {
+                table.push(new TaskForm(task.deadline, task.text, course[0].info))
+            })
+        )
+        callback(table)
+    })
+}
+
+module.exports.getAllDoneTasksForStudent = getAllDoneTasksForStudent()
+module.exports.getUnfulfilledTasksForUser = getUnfulfilledTasksForUser()

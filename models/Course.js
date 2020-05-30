@@ -36,3 +36,10 @@ module.exports.getCourse = function (id, callback) {
         callback(results,err)
     });
 }
+
+module.exports.getNameOfTheCourse = function (id, callback) {
+
+    connection.query('SELECT info FROM course WHERE idcourse=?',id, function(err, results){
+        callback(results,err)
+    });
+}
