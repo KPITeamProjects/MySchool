@@ -37,10 +37,9 @@ module.exports.editPassword = function(newPassword, id){
     completeScript(sql,[newPassword,id])
 }
 
-module.exports.getAllUsers = function () {
+module.exports.getAllUsers = function (callback) {
     connection.query('SELECT * FROM users',function(err, results){
-        if (err) throw err;
-        return results
+        callback(results[0], err)
     });
 }
 
@@ -51,17 +50,15 @@ module.exports.getUser = function (id, callback) {
     });
 }
 
-module.exports.getUserInfoId = function (id) {
+module.exports.getUserInfoId = function (id, callback) {
     connection.query('SELECT idUserInfo FROM users WHERE idUser=?',id,function(err, results){
-        if (err) throw err;
-        return results
+        callback(results[0], err)
     });
 }
 
-module.exports.getUserPhoto = function (id) {
+module.exports.getUserPhoto = function (id, callback) {
     connection.query('SELECT photo FROM users WHERE idUser=?',id,function(err, results){
-        if (err) throw err;
-        return results
+        callback(results[0], err)
     });
 }
 

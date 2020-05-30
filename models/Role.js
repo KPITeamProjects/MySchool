@@ -1,4 +1,4 @@
-const pool = require("../config/Connection")
+const connection = require("../config/Connection").connection
 
 module.exports = class Role{
 
@@ -10,15 +10,21 @@ module.exports = class Role{
 
 module.exports.addRole = function (role) {
     const script = 'INSERT INTO roles(idRole, post) VALUES(?,?)'
-    pool.query(script,[role.id,role.position], function(err, results) {
+    connection.query(script,[role.id,role.position], function(err, results) {
         if(err) throw err;
         console.log(results);
     });
 }
 
+module.exports.getRole = function(id, callback){
+    connection.query('SELECT * FROM  roles WHERE courseId=?',courseId,function(err, results){
+        callback(results[0], err)
+    });
+}
+
 module.exports.editPosition = function(position, id){
     const script = 'UPDATE roles SET post=? WHERE idRole=?'
-    pool.query(script,[position, id], function(err, results) {
+    connection.query(script,[position, id], function(err, results) {
         if(err) throw err;
         console.log(results);
     });
@@ -26,7 +32,7 @@ module.exports.editPosition = function(position, id){
 
 module.exports.deleteRole = function (id) {
     const sql = 'DELETE FROM roles WHERE idRole=?'
-    pool.query(sql,id, function(err, results) {
+    connection.query(sql,id, function(err, results) {
         if(err) throw err;
         console.log(results);
     });
