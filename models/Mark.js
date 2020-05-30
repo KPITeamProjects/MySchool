@@ -1,6 +1,8 @@
 const connection = require("../config/Connection").connection
+const course = require('./Course')
+const user = require('./User')
 
-module.exports.MarkConfig = class MarkConfig{
+class MarkConfig{
     constructor(lesson_name, date, teacher_name, value) {
         this.lesson_name = lesson_name
         this.date = date
@@ -10,7 +12,7 @@ module.exports.MarkConfig = class MarkConfig{
 }
 
 
-module.exports.Mark = class Mark{
+class Mark{
 
     constructor(id,value,date,notes,courseId,studentId,teacherId) {
         this.id = id
@@ -79,13 +81,13 @@ module.exports.editMarkTeacherId = function (newTeacherId, markId) {
     });
 }
 
-module.exports.getAllMarksOfStudent = function (studentId, callback) {
+function getAllMarksOfStudent(studentId, callback) {
     connection.query('SELECT * FROM  marks WHERE studentId=?',studentId,function(err, results){
         callback(results,err)
     });
 }
 
-module.exports.getAllMarksOfStudentByCourse = function (studentId, courseId, callback) {
+module.exports.getAllMarksOfStudentByCourse = function(studentId, courseId, callback) {
     connection.query('SELECT * FROM  marks WHERE studentId=?, courseId=?',[studentId, courseId],function(err, results){
         callback(results,err)
     });
@@ -97,3 +99,44 @@ module.exports.getAllMarksOfByCourse = function (courseId, callback) {
         callback(results,err)
     });
 }
+
+module.exports.calculateMiddleMark = function(id,callback){
+    getAllMarksOfStudent(id, function (info, err) {
+        let marks = info
+        var result = 0;
+        try {
+            marks.forEach(mark=>result+=mark.value)
+            callback(mark)
+        }catch (e) {
+            callback(marks.value)
+        }
+
+    })
+}
+
+module.exports.configMarksTableForUser = function (id, callback) {
+    getAllMarksOfStudent(id, function (info, err) {
+        let mark = info
+        let table = []
+        try{
+            mark.forEach(element =>
+                course.getCourse(element.courseId, function (lesson, error) {
+                    user.getUser(element.teacherId, function (teacher, error) {
+                        table.push(new MarkConfig(lesson,element.date,teacher,element.value))
+                    })
+                }))
+            callback(table)
+        }catch (e) {
+            course.getCourse(info.courseId, function (lesson, error) {
+                user.getUser(info.teacherId, function (teacher, error) {
+                    callback([new MarkConfig(lesson,info.date,teacher,info.value)])
+                })
+            })
+        }
+    })
+
+}
+
+module.exports.getAllMarksOfStudent = getAllMarksOfStudent
+module.exports.Mark = Mark
+module.exports.MarkConfig = MarkConfig
