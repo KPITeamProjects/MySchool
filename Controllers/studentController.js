@@ -8,7 +8,7 @@ const schedule = require('../models/Schedule')
 
 
 module.exports.fillInfo = function (request,response) {
-    const id = request.id
+    const id = request.params.id
     student.getUser(id, function (user,err) {
         if(err) alert("Not Found");
         mark.configMarksTableForUser(id, function (markTable,err) {
@@ -38,7 +38,7 @@ module.exports.fillInfo = function (request,response) {
 
 
 module.exports.fillTasks = function (request, response) {
-    const id = request.id
+    const id = request.params.id
     task.makeTableWithDoneTasks(id,function (doneTable) {
         task.makeTableUnfulfilledTasksForUser(id, function (todoTable) {
             response.render('events.ejs',{})
@@ -48,7 +48,7 @@ module.exports.fillTasks = function (request, response) {
 
 
 module.exports.getSchedule = function (request, response) {
-    const id = request.id
+    const id = request.params.id
     schedule.getSchedule(id,function (thisSchedule,err) {
         response.render('rozklad.ejs', {
 
