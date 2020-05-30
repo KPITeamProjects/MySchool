@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test_db": "node workWithData/DbRefactor.js",
-    "test": "jest test/student.test.js"
+    "test": "jest test"
   },
   "dependencies": {
     "clean-css": ">=4.1.11",
