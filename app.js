@@ -30,12 +30,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',studentRouter)
 app.use('/login', loginRouter)// use only this ones
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/cabinet', cabinetRouter);
-app.use('/events', eventsRouter);
-app.use('/rozklad', rozkladRouter);
-app.use('/register', registerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
