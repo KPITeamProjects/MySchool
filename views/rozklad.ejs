@@ -20,41 +20,19 @@
                 <th>Четвер</th>
                 <th>П'ятниця</th>
             </tr>
+            <%
+            if(userData.length!=0){
+                var i=1;
+            userData.forEach(function(data){
+            %>
             <tr>
-                <td>Англійська</td>
-                <td>Німецька</td>
-                <td>Фізкультура</td>
-                <td>Математика</td>
-                <td>Англійська</td>
+                <td><%=data.monday_lessons %></td>
+                <td><%=data.tuesda_lessons %></td>
+                <td><%=data.wednesday_lessons %></td>
+                <td><%=data.thursday_lessons%></td>
+                <td><%=data.friday_lessons%></td>
             </tr>
-            <tr>
-                <td>Математика</td>
-                <td>Англійська</td>
-                <td>Математика</td>
-                <td>Фізкультура</td>
-                <td>Німецька</td>
-            </tr>
-            <tr>
-                <td>Німецька</td>
-                <td>Англійська</td>
-                <td>Англійська</td>
-                <td>Англійська</td>
-                <td>Математика</td>
-            </tr>
-            <tr>
-                <td>Німецька</td>
-                <td>Математика</td>
-                <td></td>
-                <td>Німецька</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Англійська</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            <%  i++; })} %>
         </table>
     </div>
 </div>
