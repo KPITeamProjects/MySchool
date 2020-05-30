@@ -11,6 +11,9 @@ var eventsRouter = require('./routes/events');
 var rozkladRouter = require('./routes/rozklad');
 var registerRouter = require('./routes/register');
 
+var loginRouter = require('./routes/loginRouter')
+var studentRouter = require('./routes/studentRouter')
+
 
 var app = express();
 
@@ -23,6 +26,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/',studentRouter)
+app.use('/login', loginRouter)// use only this ones
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
