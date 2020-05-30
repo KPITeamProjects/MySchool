@@ -30,29 +30,22 @@
     <div class="inherit-body_marks">
         <table id="marks">
             <tr>
-                <th>Предмети</th>
-                <th>11.06</th>
-            </tr>
+                <th>Предмет</th>
+                <th>Дата</th>
+                <th>Ім'я Викладача</th>
+                <th>Оцінка</th>
+                <%
+            if(userData.length!=0){
+                var i=1;
+            userData.forEach(function(data){
+            %>
             <tr>
-                <th>Англійська</th>
-                <td></td>
+                <td><%=data.lesson_name %></td>
+                <td><%=data.date %></td>
+                <td><%=data.teacher_name %></td>
+                <td><%=data.value%></td>
             </tr>
-            <tr>
-                <th>Математика</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Німецька</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Українська мова</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Українська літ.</th>
-                <td></td>
-            </tr>
+            <%  i++; })} %>
         </table>
     </div>
 </div>
