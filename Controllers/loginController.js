@@ -13,6 +13,7 @@ module.exports.register = function (request, response) {
 module.exports.checkForUser = function (request, response) {
     let userLogin = request.body.login
     let password = request.body.password
+    var joker = 1
 
     user.getUserByMail(userLogin,function (user, err) {
         if (err) alert("error login or password") ;
