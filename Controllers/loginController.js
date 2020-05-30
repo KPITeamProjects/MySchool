@@ -11,13 +11,13 @@ module.exports.register = function (request, response) {
 }
 
 module.exports.checkForUser = function (request, response) {
-    let login = request.body.login
+    let userLogin = request.body.login
     let password = request.body.password
 
-    user.getUserByMail(login(),function (info, err) {
+    user.getUserByMail(userLogin,function (user, err) {
         if (err) alert("error login or password") ;
-        if (password.equals(password)){
-            response.redirect("/student/" + info.id + "/cabinet")
+        if (password.equals(user.password)){
+            response.redirect("/student/" + user.id + "/cabinet")
         }
     })
 }
