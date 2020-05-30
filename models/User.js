@@ -86,7 +86,7 @@ module.exports.getUser = function (id, callback) {
 module.exports.getUserByMail = function (mail, callback) {
 
     connection.query('SELECT * FROM users WHERE email=?',mail, function(err, results){
-        callback(results,err)
+        callback(results[0],err)
     });
 }
 /**
