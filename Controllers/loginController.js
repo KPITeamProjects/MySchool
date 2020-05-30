@@ -10,14 +10,16 @@ module.exports.register = function (request, response) {
     response.render('register', { title: 'Розклад'})
 }
 
-module.exports.checkForUser = function (request, response) {
+function checkForUser(request, response) {
     let login = request.body.login
     let password = request.body.password
 
     user.getUserByMail(login(),function (info, err) {
         if (err) alert("error login or password") ;
         if (password.equals(password)){
-            response.redirect("/student/" + info.id + "/cabinet")
+            response.redirect("/student/cabinet"+ info.id)
         }
     })
 }
+
+module.exports.checkForUser = checkForUser;

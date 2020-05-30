@@ -12,8 +12,22 @@
             <p class="name">MySchool вхід</p>
             <input type="text" id="login" placeholder="Логін"/>
             <input type="password" id="password" placeholder="Пароль"/>
-            <button id="enter">login</button>
+            <button id="enter" onclick="checkForUser()">login</button>
             <p class="message">Не зареєстровані? <a href="/register">Створити аккаунт</a></p>
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    function checkForUser(request, response) {
+        let login = request.body.login
+        let password = request.body.password
+
+        user.getUserByMail(login(),function (info, err) {
+            if (err) alert("error login or password") ;
+            if (password.equals(password)){
+                response.redirect("/student/cabinet"+ info.id)
+            }
+        })
+    }
+</script>
+</body>

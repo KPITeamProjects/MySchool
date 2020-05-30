@@ -8,7 +8,7 @@ const schedule = require('../models/Schedule')
 
 
 module.exports.fillInfo = function (request,response) {
-    const id = request.id
+    const id = request.params.id
     student.getUser(id, function (user,err) {
         if(err) alert("Not Found");
         mark.configMarksTableForUser(id, function (markTable,err) {
