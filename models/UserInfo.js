@@ -11,7 +11,7 @@ module.exports.UserInfo = class UserInfo {
 
 module.exports.getUserInfo = function (id, callback) {
     connection.query('SELECT * FROM users WHERE id=?',id,function(err, results){
-        callback(results[0], err)
+        callback(results, err)
     });
 }
 

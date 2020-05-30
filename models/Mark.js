@@ -1,5 +1,15 @@
 const connection = require("../config/Connection").connection
 
+module.exports.MarkConfig = class MarkConfig{
+    constructor(lesson_name, date, teacher_name, value) {
+        this.lesson_name = lesson_name
+        this.date = date
+        this.teacher_name = teacher_name
+        this.value = value
+    }
+}
+
+
 module.exports.Mark = class Mark{
 
     constructor(id,value,date,notes,courseId,studentId,teacherId) {
@@ -15,7 +25,7 @@ module.exports.Mark = class Mark{
 
 module.exports.addMark = function (mark) {
     const script = 'INSERT INTO marks(idMark, value, date,notes,courseId, studentId,teacherId) VALUES(?,?,?,?,?,?,?)'
-    connection.query(script,[mark.id,mark.value,mark.dte,mark.notes,mark.courseId,mark.studentId,mark.teacherId], function(err, results) {
+    connection.query(script,[mark.id,mark.value,mark.date,mark.notes,mark.courseId,mark.studentId,mark.teacherId], function(err, results) {
         if(err) throw err;
         console.log(results);
     });
@@ -71,19 +81,19 @@ module.exports.editMarkTeacherId = function (newTeacherId, markId) {
 
 module.exports.getAllMarksOfStudent = function (studentId, callback) {
     connection.query('SELECT * FROM  marks WHERE studentId=?',studentId,function(err, results){
-        callback(results[0],err)
+        callback(results,err)
     });
 }
 
 module.exports.getAllMarksOfStudentByCourse = function (studentId, courseId, callback) {
     connection.query('SELECT * FROM  marks WHERE studentId=?, courseId=?',[studentId, courseId],function(err, results){
-        callback(results[0],err)
+        callback(results,err)
     });
 }
 
 
 module.exports.getAllMarksOfByCourse = function (courseId, callback) {
     connection.query('SELECT * FROM  marks WHERE courseId=?', courseId,function(err, results){
-        callback(results[0],err)
+        callback(results,err)
     });
 }

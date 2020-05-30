@@ -24,7 +24,7 @@ module.exports.addSchedule = function(schedule){
 
 module.exports.getSchedule = function(id,callback){
     connection.query('SELECT * FROM  schedules WHERE idschedule=?',id,function(err, results){
-        callback(results[0], err)
+        callback(results, err)
     });
 }
 

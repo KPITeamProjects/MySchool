@@ -47,7 +47,7 @@ module.exports.editTaskDeadline = function (progress, id) {
 
 module.exports.getTasksForStudent = function (studentId, callback) {
     connection.query('SELECT * FROM  tasks WHERE studentId=?',studentId,function(err, results){
-        callback(results[0], err)
+        callback(results, err)
     });
 }
 

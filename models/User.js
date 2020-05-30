@@ -39,27 +39,27 @@ module.exports.editPassword = function(newPassword, id){
 
 module.exports.getAllUsers = function (callback) {
     connection.query('SELECT * FROM users',function(err, results){
-        callback(results[0], err)
+        callback(results, err)
     });
 }
 
 module.exports.getUser = function (id, callback) {
 
     connection.query('SELECT * FROM users WHERE idUser=?',id, function(err, results){
-        callback(results[0],err)
+        callback(results,err)
     });
 }
 
 module.exports.getUserByMail = function (mail, callback) {
 
     connection.query('SELECT * FROM users WHERE email=?',mail, function(err, results){
-        callback(results[0],err)
+        callback(results,err)
     });
 }
 
 module.exports.getUserInfoId = function (id, callback) {
     connection.query('SELECT idUserInfo FROM users WHERE idUser=?',id,function(err, results){
-        callback(results[0], err)
+        callback(results, err)
     });
 }
 
