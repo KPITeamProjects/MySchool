@@ -57,12 +57,12 @@ module.exports.getSchedule = function (request, response) {
         myClass.getClass(thisStudent[0].class_idclass, function (thisClass, err) {
             schedule.getSchedule(thisClass[0].schedule_idschedule, function (thisSchedule,err) {
                 response.render('rozklad.ejs', {
-                    dataMonday: thisSchedule.Monday.split(' '),
-                    dataTuesday: thisSchedule.Tuesday.split(' '),
-                    dataWednesday: thisSchedule.Wednesday.split(' '),
-                    dataThursday: thisSchedule.Thursday.split(' '),
-                    dataFriday: thisSchedule.Friday.split(' '),
-                    dataSaturday: thisSchedule.Saturday.split(' ')
+                    dataMonday: thisSchedule.Monday.split(','),
+                    dataTuesday: thisSchedule.Tuesday.split(','),
+                    dataWednesday: thisSchedule.Wednesday.split(','),
+                    dataThursday: thisSchedule.Thursday.split(','),
+                    dataFriday: thisSchedule.Friday.split(','),
+                    dataSaturday: thisSchedule.Saturday.split(',')
                 })
 
             })
