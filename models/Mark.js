@@ -4,11 +4,12 @@ const user = require('./User')
 const userInfo = require('./UserInfo')
 /** Class representing a mark configuration. */
 class MarkConfig{
-    constructor(lesson_name, date, teacher_name, value) {
+    constructor(lesson_name, date, teacher_name, value, comment) {
         this.lesson_name = lesson_name
         this.date = date
         this.teacher_name = teacher_name
         this.value = value
+        this.commen = comment
     }
 }
 
@@ -174,7 +175,7 @@ module.exports.configMarksTableForUser = function (id, callback) {
                 user.getUser(element.teacherId, function (teacher, error) {
                     userInfo.getUserInfo(teacher[0].idUserInfo, function (info,err) {
                         let dating = element.date.getDate()+"."+element.date.getMonth()+"."+element.date.getFullYear()
-                        table.push(new MarkConfig(lesson[0].info,dating,info[0].name,element.value))
+                        table.push(new MarkConfig(lesson[0].info,dating,info[0].name,element.value, element.notes))
                     })
                 })
             }))
