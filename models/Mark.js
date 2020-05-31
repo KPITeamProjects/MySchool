@@ -153,7 +153,7 @@ module.exports.calculateMiddleMark = function(id,callback){
                 result+=mark.value
                 counter++;
             })
-            setTimeout(()=>callback(result/counter), 1000)
+            setTimeout(()=>callback((result/counter).toFixed(1)), 1000)
         }catch (e) {
             callback(marks.value)
         }

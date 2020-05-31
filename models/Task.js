@@ -124,8 +124,7 @@ module.exports.makeTableWithDoneTasks = function(studentId,callback){
         let table = []
         tasks.forEach(task =>
             course.getNameOfTheCourse(task.courseId, function (course,err) {
-                let deadlineDate = task.deadline.getHours()+":"+task.deadline.getMinutes()+" "+
-                    task.deadline.getDate()+"."+task.deadline.getMonth()+"."+task.deadline.getFullYear()
+                let deadlineDate = task.deadline.getDate()+"."+task.deadline.getMonth()+"."+task.deadline.getFullYear()
                 table.push(new TaskForm(deadlineDate, task.text, course[0].info))
             })
         )
@@ -138,8 +137,7 @@ module.exports.makeTableUnfulfilledTasksForUser = function(studentId,callback){
         let table = []
         tasks.forEach(task =>
             course.getNameOfTheCourse(task.courseId, function (course,err) {
-                let deadlineDate = task.deadline.getHours()+":"+task.deadline.getMinutes()+" "+
-                task.deadline.getDate()+"."+task.deadline.getMonth()+"."+task.deadline.getFullYear()
+                let deadlineDate = task.deadline.getDate()+"."+task.deadline.getMonth()+"."+task.deadline.getFullYear()
                 table.push(new TaskForm(deadlineDate, task.text, course[0].info))
             })
         )

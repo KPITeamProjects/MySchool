@@ -20,13 +20,46 @@
                 <th>Четвер</th>
                 <th>П'ятниця</th>
             </tr>
+
             <tr>
-                <td><%=data.monday %></td>
-                <td><%=data.tuesday %></td>
-                <td><%=data.wednesday %></td>
-                <td><%=data.thursday%></td>
-                <td><%=data.friday%></td>
+                <%
+                if(dataMonday.length!=0){
+                dataMonday.forEach(function(monday){
+                %>
+                <td><%=monday%></td>
+                <% })} %>
+                <%
+                if(dataTuesday.length!=0){
+                dataTuesday.forEach(function(tuesday){
+                %>
+                <td><%=tuesday%></td>
+                <% })} %>
+                <%
+                if(dataWednesday.length!=0){
+                dataWednesday.forEach(function(wednesday){
+                %>
+                <td><%=wednesday%></td>
+                <% })} %>
+                <%
+                if(dataThursday.length!=0){
+                dataThursday.forEach(function(thursday){
+                %>
+                <td><%=thursday%></td>
+                <% })} %>
+                <%
+                if(dataFriday.length!=0){
+                dataFriday.forEach(function(friday){
+                %>
+                <td><%=friday%></td>
+                <% })} %>
+                <%
+                if(dataSaturday.length!=0){
+                dataSaturday.forEach(function(saturday){
+                %>
+                <td><%=saturday%></td>
+                <% })} %>
             </tr>
+
         </table>
     </div>
 </div>
