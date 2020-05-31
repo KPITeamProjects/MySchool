@@ -138,7 +138,7 @@ module.exports.makeTableUnfulfilledTasksForUser = function(studentId,callback){
                 table.push(new TaskForm(task.deadline, task.text, course[0].info))
             })
         )
-        callback(table)
+        setTimeout(()=>callback(table),1000)
     })
 }
 

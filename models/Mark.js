@@ -1,6 +1,7 @@
 const connection = require("../config/Connection").connection
 const course = require('./Course')
 const user = require('./User')
+const userInfo = require('./UserInfo')
 /** Class representing a mark configuration. */
 class MarkConfig{
     constructor(lesson_name, date, teacher_name, value) {
@@ -163,21 +164,23 @@ module.exports.configMarksTableForUser = function (id, callback) {
     getAllMarksOfStudent(id, function (info, err) {
         let mark = info
         let table = []
-        try{
-            mark.forEach(element =>
-                course.getCourse(element.courseId, function (lesson, error) {
-                    user.getUser(element.teacherId, function (teacher, error) {
-                        table.push(new MarkConfig(lesson,element.date,teacher,element.value))
+
+        mark.forEach(element =>
+            course.getCourse(element.courseId, function (lesson, error) {
+                user.getUser(element.teacherId, function (teacher, error) {
+                    userInfo.getUserInfo(teacher[0].idUserInfo, function (info,err) {
+                        table.push(new MarkConfig(lesson[0].info,element.date,info[0].name,element.value))
                     })
-                }))
-            callback(table)
-        }catch (e) {
-            course.getCourse(info.courseId, function (lesson, error) {
-                user.getUser(info.teacherId, function (teacher, error) {
-                    callback([new MarkConfig(lesson,info.date,teacher,info.value)])
                 })
+            }))
+
+        setTimeout(()=>callback(table), 1000)
+
+        /*course.getCourse(info.courseId, function (lesson, error) {
+            user.getUser(info.teacherId, function (teacher, error) {
+                callback([new MarkConfig(lesson,info.date,teacher,info.value)])
             })
-        }
+        })*/
     })
 
 }
