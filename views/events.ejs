@@ -12,16 +12,20 @@
 <div class="body">
     <div class="inherit-body">
         <table id="to-do">
-            <tr id="head_eve">
-                <th>Необхідно виконати</th>
+            <tr id="head_eve2">
+                <th>Назва предмету</th>
+                <th>Невиконане завдання</th>
+                <th>Дедлайн</th>
             </tr>
             <%
-            if(userData.length!=0){
+            if(taskTable.length!=0){
                 var i=1;
-            userData.forEach(function(data){
+            taskTable.forEach(function(data){
             %>
             <tr>
-                <td><%=i+") "+lesson_name+": "+task+" "+ deadline%></td>
+                <td><%=data.lesson_name%></td>
+                <td><%=data.task%></td>
+                <td><%=data.deadline%></td>
             </tr>
             <%  i++; })} %>
         </table>
@@ -31,16 +35,20 @@
     <div class="inherit-body">
         <table id="to-do2">
             <tr id="head_eve2">
-                <th>Виконано</th>
-                <th></th>
+                <th>Назва предмету</th>
+                <th>Виконане завдання</th>
+                <th>Дедлайн</th>
             </tr>
             <%
-            if(userdoneData.length!=0){
+            if(taskdoneTable.length!=0){
                 var ii=1;
-            userdoneData.forEach(function(data){
+            taskdoneTable.forEach(function(data){
             %>
             <tr>
-                <td><%=lesson_name+": "+task+" "+ deadline%></td>
+                <td><%=data.lesson_name%></td>
+                <td><%=data.task%></td>
+                <td><%=data.deadline%></td>
+
             </tr>
             <%  ii++; })} %>
         </table>

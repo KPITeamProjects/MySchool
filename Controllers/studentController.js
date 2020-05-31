@@ -42,8 +42,8 @@ module.exports.fillTasks = function (request, response) {
     task.makeTableWithDoneTasks(id,function (doneTable) {
         task.makeTableUnfulfilledTasksForUser(id, function (todoTable) {
             response.render('events.ejs',{
-                userData:todoTable,
-                userdoneData:doneTable,
+                taskTable:todoTable,
+                taskdoneTable:doneTable,
                 title:"Завдання"
             })
         })
@@ -55,7 +55,7 @@ module.exports.getSchedule = function (request, response) {
     const id = request.session.userId
     schedule.getSchedule(id,function (thisSchedule,err) {
         response.render('rozklad.ejs', {
-
+            userData:thisSchedule
         })
     })
 };

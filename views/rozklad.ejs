@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><%=title%></title>
+    <title>Розклад</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -20,19 +20,13 @@
                 <th>Четвер</th>
                 <th>П'ятниця</th>
             </tr>
-            <%
-            if(userData.length!=0){
-                var i=1;
-            userData.forEach(function(data){
-            %>
             <tr>
-                <td><%=data.monday_lessons %></td>
-                <td><%=data.tuesday_lessons %></td>
-                <td><%=data.wednesday_lessons %></td>
-                <td><%=data.thursday_lessons%></td>
-                <td><%=data.friday_lessons%></td>
+                <td><%=data.monday %></td>
+                <td><%=data.tuesday %></td>
+                <td><%=data.wednesday %></td>
+                <td><%=data.thursday%></td>
+                <td><%=data.friday%></td>
             </tr>
-            <%  i++; })} %>
         </table>
     </div>
 </div>
