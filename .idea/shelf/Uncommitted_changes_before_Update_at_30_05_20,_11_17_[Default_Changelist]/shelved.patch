@@ -1,0 +1,35 @@
+Index: config/Connection.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>let mysql = require('mysql');\nconst dbConfig = require(\"./db.config\");\n\nmodules.exports = mysql.createPool({\n\n    host: dbConfig.HOST,\n    user: dbConfig.USER,\n    password: dbConfig.PASSWORD,\n    database: dbConfig.DB\n});\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- config/Connection.js	(revision d8fd7a1d6e6f8d3984f5f8dba62fa957f61b2dfd)
++++ config/Connection.js	(date 1590786636831)
+@@ -1,7 +1,7 @@
+ let mysql = require('mysql');
+ const dbConfig = require("./db.config");
+ 
+-modules.exports = mysql.createPool({
++module.exports = mysql.createPool({
+ 
+     host: dbConfig.HOST,
+     user: dbConfig.USER,
+Index: tests/student.test.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- tests/student.test.js	(date 1590786636839)
++++ tests/student.test.js	(date 1590786636839)
+@@ -0,0 +1,6 @@
++let user = require('../models/User')
++const assert = require("assert");
++
++it("get user test", function(){
++    assert.equal(user.getUser(1)[0],1)
++});
+\ No newline at end of file
+diff --git routes/registrRouter.js routes/registrRouter.js
+new file mode 100644

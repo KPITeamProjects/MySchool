@@ -1,0 +1,22 @@
+Index: Controllers/loginController.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const user = require('../models/User')\n\n\nmodule.exports.login = function (request, response) {\n    response.render('login', { title: 'Логін' })\n}\n\n\nmodule.exports.register = function (request, response) {\n    response.render('register', { title: 'Розклад'})\n}\n\nmodule.exports.checkForUser = function (request, response) {\n    let userLogin = request.body.login\n    let password = request.body.password\n    var joker = 1\n\n    user.getUserByMail(userLogin,function (user, err) {\n        if (err) alert(\"error login or password\") ;\n        if (password.equals(user.password)){\n            response.redirect(\"/student/\" + user.id + \"/cabinet\")\n        }\n    })\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Controllers/loginController.js	(revision bf70689693e6ce02db92a603ecf36a664b0f961a)
++++ Controllers/loginController.js	(date 1590873496807)
+@@ -13,11 +13,11 @@
+ module.exports.checkForUser = function (request, response) {
+     let userLogin = request.body.login
+     let password = request.body.password
+-    var joker = 1
+ 
+     user.getUserByMail(userLogin,function (user, err) {
+         if (err) alert("error login or password") ;
+         if (password.equals(user.password)){
++
+             response.redirect("/student/" + user.id + "/cabinet")
+         }
+     })

@@ -1,0 +1,72 @@
+Index: routes/loginRouter.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- routes/loginRouter.js	(revision 6c00e486097593a317ede9e7a9e0bfa4ce4dcdaa)
++++ routes/loginRouter.js	(date 1590835643667)
+@@ -1,0 +1,8 @@
++var express = require('express');
++var router = express.Router();
++var loginController = require('../Controllers/loginController')
++
++
++router.get('/', loginController.login);
++router.get('/register', loginController.register)
++
+Index: models/User.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const connection = require(\"../config/Connection\").connection\n\nmodule.exports.User = class User {\n    constructor(id, info, role, classId, email, photo) {\n        this.id = id;\n        this.info = info;\n        this.role = role;\n        this.classId = classId;\n        this.email = email;\n        this.photo = photo\n    }\n}\n\nmodule.exports.addUser = function (user) {\n\n    const sql = `INSERT INTO users(idUser, idUserInfo, role_idrole,class_idclass, email, photo) VALUES(?,?,?,?,?,?)`;\n    completeScript(sql, [user.id,user.info,user.role,user.classId, user.email, user.photo])\n}\n\nmodule.exports.editUserRole = function (role, id) {\n    const sql = 'UPDATE users SET role_idrole=? WHERE idUser=?'\n    completeScript(sql,[role,id])\n}\n\nmodule.exports.editUserClass = function (classId, id) {\n    const sql = 'UPDATE users SET class_idclass=? WHERE idUser=?'\n    completeScript(sql,[classId,id])\n}\n\nmodule.exports.editUserEmail = function(newEmail, id){\n    const sql = 'UPDATE users SET email=? WHERE idUser=?'\n    completeScript(sql,[newEmail,id])\n}\n\nmodule.exports.editPassword = function(newPassword, id){\n    const sql = 'UPDATE users SET password=? WHERE idUser=?'\n    completeScript(sql,[newPassword,id])\n}\n\nmodule.exports.getAllUsers = function (callback) {\n    connection.query('SELECT * FROM users',function(err, results){\n        callback(results[0], err)\n    });\n}\n\nmodule.exports.getUser = function (id, callback) {\n\n    connection.query('SELECT * FROM users WHERE idUser=?',id, function(err, results){\n        callback(results[0],err)\n    });\n}\n\nmodule.exports.getUserInfoId = function (id, callback) {\n    connection.query('SELECT idUserInfo FROM users WHERE idUser=?',id,function(err, results){\n        callback(results[0], err)\n    });\n}\n\nmodule.exports.getUserPhoto = function (id, callback) {\n    connection.query('SELECT photo FROM users WHERE idUser=?',id,function(err, results){\n        callback(results[0], err)\n    });\n}\n\nfunction completeScript(script,data) {\n\n    connection.query(script,data, function(err, results) {\n        if(err) throw err;\n        console.log(results);\n    });\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- models/User.js	(revision 6c00e486097593a317ede9e7a9e0bfa4ce4dcdaa)
++++ models/User.js	(date 1590836262543)
+@@ -50,6 +50,13 @@
+     });
+ }
+ 
++module.exports.getUserByMail = function (mail, callback) {
++
++    connection.query('SELECT * FROM users WHERE email=?',mail, function(err, results){
++        callback(results[0],err)
++    });
++}
++
+ module.exports.getUserInfoId = function (id, callback) {
+     connection.query('SELECT idUserInfo FROM users WHERE idUser=?',id,function(err, results){
+         callback(results[0], err)
+Index: Controllers/loginController.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Controllers/loginController.js	(date 1590836745365)
++++ Controllers/loginController.js	(date 1590836745365)
+@@ -0,0 +1,24 @@
++const user = require('../models/User')
++
++
++module.exports.login = function (request, response) {
++
++}
++
++
++module.exports.register = function (request, response) {
++
++}
++
++module.exports.checkForUser = function (request, response) {
++    let login = request.body.login
++    let password = request.body.password
++
++    user.getUserByMail(login(),function (info, err) {
++        if (err) alert("error login or password") ;
++        if (password.equals(password)){
++            response.redirect('/'+info.id)
++        }
++    })
++
++}
+\ No newline at end of file

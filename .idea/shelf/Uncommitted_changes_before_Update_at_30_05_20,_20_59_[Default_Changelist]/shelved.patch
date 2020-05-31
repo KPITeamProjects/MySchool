@@ -1,0 +1,177 @@
+Index: views/rozklad.ejs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title><%=title%></title>\n    <link rel='stylesheet' href='/stylesheets/style.css' />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n</head>\n<header>\n    <%- include ('templates/header.ejs');-%>\n</header>\n<body>\n<div class=\"body\">\n    <div class=\"inherit-body\">\n        <table id=\"myTable\">\n            <tr>\n                <th>Понеділок</th>\n                <th>Вівторок</th>\n                <th>Середа</th>\n                <th>Четвер</th>\n                <th>П'ятниця</th>\n            </tr>\n            <%\n            if(userData.length!=0){\n                var i=1;\n            userData.forEach(function(data){\n            %>\n            <tr>\n                <td><%=data.monday_lessons %></td>\n                <td><%=data.tuesda_lessons %></td>\n                <td><%=data.wednesday_lessons %></td>\n                <td><%=data.thursday_lessons%></td>\n                <td><%=data.friday_lessons%></td>\n            </tr>\n            <%  i++; })} %>\n        </table>\n    </div>\n</div>\n\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- views/rozklad.ejs	(revision 5eaa20dcb206f1c6ad4538ed2809b89ed2eb43b6)
++++ views/rozklad.ejs	(date 1590861539930)
+@@ -27,7 +27,7 @@
+             %>
+             <tr>
+                 <td><%=data.monday_lessons %></td>
+-                <td><%=data.tuesda_lessons %></td>
++                <td><%=data.tuesday_lessons %></td>
+                 <td><%=data.wednesday_lessons %></td>
+                 <td><%=data.thursday_lessons%></td>
+                 <td><%=data.friday_lessons%></td>
+Index: models/Task.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const connection = require(\"../config/Connection\").connection\n\nmodule.exports = class Task {\n\n    constructor(id, deadline, text,progress, studentId, courseId) {\n        this.id = id\n        this.deadline = deadline\n        this.text = text\n        this.progress = progress\n        this.studentId = studentId\n        this.courseId = courseId\n    }\n}\n\nmodule.exports.addTask = function (task) {\n    const sql = `INSERT INTO tasks(idtask, deadline, text,progress, studentId,courseId) VALUES(?,?,?,?,?)`;\n\n    connection.query(sql,[task.id,task.deadline,task.text,task.progress,task.studentId,task.courseId], function(err, results) {\n        if(err) throw err;\n        console.log(results);\n    });\n}\n\nmodule.exports.editTaskDeadline = function (newDeadline, id) {\n    const script = 'UPDATE tasks SET deadline=? WHERE idtask=?'\n    connection.query(script,[newDeadline, id], function(err, results) {\n        if(err) throw err;\n        console.log(results);\n    });\n}\n\nmodule.exports.editTaskText = function (newText, id) {\n    const script = 'UPDATE tasks SET text=? WHERE idtask=?'\n    connection.query(script,[newText, id], function(err, results) {\n        if(err) throw err;\n        console.log(results);\n    });\n}\n\nmodule.exports.editTaskDeadline = function (progress, id) {\n    const script = 'UPDATE tasks SET progress=? WHERE idtask=?'\n    connection.query(script,[progress, id], function(err, results) {\n        if(err) throw err;\n        console.log(results);\n    });\n}\n\nmodule.exports.getTasksForStudent = function (studentId, callback) {\n    connection.query('SELECT * FROM  tasks WHERE studentId=?',studentId,function(err, results){\n        callback(results, err)\n    });\n}\n\nmodule.exports.getAllTasksByCourse = function (courseId, callback) {\n    connection.query('SELECT * FROM  marks WHERE courseId=?',courseId,function(err, results){\n        callback(results[0], err)\n    });\n}\n\nmodule.exports.deleteTask = function (id) {\n    const sql = 'DELETE FROM tasks WHERE idtask=?'\n    connection.query(sql,id, function(err, results) {\n        if(err) throw err;\n        console.log(results);\n    });\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- models/Task.js	(revision 5eaa20dcb206f1c6ad4538ed2809b89ed2eb43b6)
++++ models/Task.js	(date 1590861272271)
+@@ -1,4 +1,14 @@
+ const connection = require("../config/Connection").connection
++const course = require('../models/Course')
++
++class TaskForm{
++
++    constructor(deadline, text, subject) {
++        this.deadline = deadline
++        this.text = text
++        this.subject = subject
++    }
++}
+ 
+ module.exports = class Task {
+ 
+@@ -57,10 +67,48 @@
+     });
+ }
+ 
++function getAllDoneTasksForStudent(studentId, callback) {
++    connection.query('SELECT * FROM  marks WHERE studentId=?, progress=Done',studentId,function(err, results){
++        callback(results[0], err)
++    });
++}
++
++module.exports.getUnfulfilledTasksForUser = function(studentId, callback){
++    connection.query('SELECT * FROM  marks WHERE studentId=?, progress=NULL',studentId,function(err, results){
++        callback(results[0], err)
++    });
++}
++
+ module.exports.deleteTask = function (id) {
+     const sql = 'DELETE FROM tasks WHERE idtask=?'
+     connection.query(sql,id, function(err, results) {
+         if(err) throw err;
+         console.log(results);
+     });
+-}
+\ No newline at end of file
++}
++
++module.exports.makeTableWithDoneTasks = function(studentId,callback){
++    getAllDoneTasksForStudent(studentId, function (tasks, err) {
++        let table = []
++        tasks.forEach(task =>
++            course.getNameOfTheCourse(task.courseId, function (course,err) {
++                table.push(new TaskForm(task.deadline, task.text, course[0].info))
++            })
++        )
++        callback(table)
++    })
++}
++
++module.exports.makeTableUnfulfilledTasksForUser = function(studentId,callback){
++    getUnfulfilledTasksForUser(studentId, function (tasks, err) {
++        let table = []
++        tasks.forEach(task =>
++            course.getNameOfTheCourse(task.courseId, function (course,err) {
++                table.push(new TaskForm(task.deadline, task.text, course[0].info))
++            })
++        )
++        callback(table)
++    })
++}
++
++module.exports.getAllDoneTasksForStudent = getAllDoneTasksForStudent()
+\ No newline at end of file
+Index: routes/studentRouter.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const express = require(\"express\");\nconst studentController = require(\"../Controllers/studentController\");\nconst studentRouter = express.Router();\n\nstudentRouter.get('/:id/cabinet', studentController.fillInfo)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- routes/studentRouter.js	(revision 5eaa20dcb206f1c6ad4538ed2809b89ed2eb43b6)
++++ routes/studentRouter.js	(date 1590861272267)
+@@ -2,4 +2,6 @@
+ const studentController = require("../Controllers/studentController");
+ const studentRouter = express.Router();
+ 
+-studentRouter.get('/:id/cabinet', studentController.fillInfo)
+\ No newline at end of file
++studentRouter.get('/:id/cabinet', studentController.fillInfo)
++studentRouter.get('/:id/tasks', studentController.fillTasks)
++studentRouter.get('/:id/schedule', studentController.getSchedule)
+\ No newline at end of file
+Index: Controllers/studentController.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const student = require('../models/User')\nconst mark = require('../models/Mark')\nconst info = require('../models/UserInfo')\nconst myClass = require('../models/Class')\nconst school = require('../models/School')\n\n\nmodule.exports.fillInfo = function (request,response) {\n    const id = request.id\n    student.getUser(id, function (user,err) {\n        if(err) alert(\"Not Found\");\n        mark.configMarksTableForUser(id, function (markTable,err) {\n            info.getUserInfo(id, function (userInfo, error) {\n                let splitedName = userInfo.name.split(' ')\n                myClass.getClass(user.class_idclass, function (classInfo, err) {\n                    mark.calculateMiddleMark(id,function (middle, error) {\n                        school.getSchool(user.school, function (mySchool,err) {\n                            response.render('cabinet.ejs', {\n                                mark:middle,\n                                surname:splitedName[0],\n                                name:splitedName[1],\n                                second_name:splitedName[2],\n                                school:mySchool.name,\n                                form:classInfo.Name,\n                                userData:markTable\n                            })\n                        })\n\n                    })\n\n                })\n            })\n        })\n    })\n};\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Controllers/studentController.js	(revision 5eaa20dcb206f1c6ad4538ed2809b89ed2eb43b6)
++++ Controllers/studentController.js	(date 1590861272283)
+@@ -3,6 +3,8 @@
+ const info = require('../models/UserInfo')
+ const myClass = require('../models/Class')
+ const school = require('../models/School')
++const task = require('../models/Task')
++const schedule = require('../models/Schedule')
+ 
+ 
+ module.exports.fillInfo = function (request,response) {
+@@ -33,3 +35,23 @@
+         })
+     })
+ };
++
++
++module.exports.fillTasks = function (request, response) {
++    const id = request.id
++    task.makeTableWithDoneTasks(id,function (doneTable) {
++        task.makeTableUnfulfilledTasksForUser(id, function (todoTable) {
++            response.render('events.ejs',{})
++        })
++    })
++};
++
++
++module.exports.getSchedule = function (request, response) {
++    const id = request.id
++    schedule.getSchedule(id,function (thisSchedule,err) {
++        response.render('rozklad.ejs', {
++
++        })
++    })
++};
+Index: models/Course.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const connection = require(\"../config/Connection\").connection\n\nmodule.exports = class Course {\n\n    constructor(id, info, userId, bookId) {\n        this.id = id;\n        this.info = info;\n    }\n\n}\n\nmodule.exports.addCourse = function (course) {\n    const sql = `INSERT INTO course(idcourse, info) VALUES(?,?)`;\n\n    connection.query(sql,[course.id, course.info], function(err, results) {\n        if(err) throw err;\n        console.log(results);\n    });\n}\n\nmodule.exports.getCourse = function (id, callback) {\n\n    connection.query('SELECT * FROM course WHERE idcourse=?',id, function(err, results){\n        callback(results,err)\n    });\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- models/Course.js	(revision 5eaa20dcb206f1c6ad4538ed2809b89ed2eb43b6)
++++ models/Course.js	(date 1590860111414)
+@@ -23,4 +23,11 @@
+     connection.query('SELECT * FROM course WHERE idcourse=?',id, function(err, results){
+         callback(results,err)
+     });
++}
++
++module.exports.getNameOfTheCourse = function (id, callback) {
++
++    connection.query('SELECT info FROM course WHERE idcourse=?',id, function(err, results){
++        callback(results,err)
++    });
+ }
+\ No newline at end of file

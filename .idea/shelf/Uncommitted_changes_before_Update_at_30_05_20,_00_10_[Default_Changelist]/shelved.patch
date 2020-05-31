@@ -1,0 +1,51 @@
+Index: config/Connection.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>let mysql = require('mysql');\nconst dbConfig = require(\"./db.config\");\n\nmodules.exports = mysql.createPool({\n\n    host: dbConfig.HOST,\n    user: dbConfig.USER,\n    password: dbConfig.PASSWORD,\n    database: dbConfig.DB\n});\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- config/Connection.js	(revision 58b44336172f29327b5798f3870502830134dc52)
++++ config/Connection.js	(date 1590785077341)
+@@ -1,7 +1,7 @@
+ let mysql = require('mysql');
+ const dbConfig = require("./db.config");
+ 
+-modules.exports = mysql.createPool({
++module.exports = mysql.createPool({
+ 
+     host: dbConfig.HOST,
+     user: dbConfig.USER,
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"myschool\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"start\": \"node ./bin/www\",\n    \"test_db\": \"node workWithData/DbRefactor.js\"\n  },\n  \"dependencies\": {\n      \"clean-css\": \">=4.1.11\",\n    \"cookie-parser\": \"~1.4.4\",\n    \"debug\": \"~2.6.9\",\n    \"ejs\": \"^3.1.3\",\n    \"express\": \"~4.16.1\",\n    \"hbs\": \"^4.1.1\",\n    \"http-errors\": \"~1.6.3\",\n    \"morgan\": \"~1.9.1\",\n    \"mysql\": \"^2.18.1\",\n    \"mysql2\": \"^2.1.0\",\n    \"pug\": \"2.0.0-beta11\",\n    \"sequelize\": \"^5.21.10\"\n  },\n  \"devDependencies\": {\n    \"mocha\": \"^7.2.0\"\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- package.json	(revision 58b44336172f29327b5798f3870502830134dc52)
++++ package.json	(date 1590783752336)
+@@ -7,7 +7,7 @@
+     "test_db": "node workWithData/DbRefactor.js"
+   },
+   "dependencies": {
+-      "clean-css": ">=4.1.11",
++    "clean-css": ">=4.1.11",
+     "cookie-parser": "~1.4.4",
+     "debug": "~2.6.9",
+     "ejs": "^3.1.3",
+Index: tests/student.test.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- tests/student.test.js	(date 1590784070197)
++++ tests/student.test.js	(date 1590784070197)
+@@ -0,0 +1,6 @@
++let user = require('../models/User')
++const assert = require("assert");
++
++it("get user test", function(){
++    assert.equal(user.getUser(1)[0],1)
++});
+\ No newline at end of file
