@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea9079ea-a31d-4a1f-ad9f-946b0b19fde0" name="Default Changelist" comment="" />
+    <list default="true" id="cee54406-0f62-43bf-9be2-4d57c3daeeae" name="Default Changelist" comment="final changes">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +30,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -17,7 +38,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1caJoXtYcJ6UJXBuZ6xfr9ReGj8" />
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/KPITeamProjects/MySchool.git" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1caCu30Hqmk4lvLS0OWSjgLYfWp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,358 +56,368 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MySchool3" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\WebstormProjects\MySchool" />
+      <recent name="C:\Users\asus\WebstormProjects\MySchool\config" />
+      <recent name="C:\Users\asus\WebstormProjects\MySchool\MySchool\routes" />
+      <recent name="C:\Users\asus\WebstormProjects\MySchool\MySchool\views" />
     </key>
-  </component>
-  <component name="RunManager" selected="Mocha.addUser.returns user1">
-    <configuration name="addUser.returns user1" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/models/test/template.js</test-file>
-      <test-names>
-        <name value="addUser" />
-        <name value="returns user1" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="should multiply two numbers" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/tests/config.tests.js</test-file>
-      <test-names>
-        <name value="should multiply two numbers" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Mocha.addUser.returns user1" />
-        <item itemvalue="Mocha.should multiply two numbers" />
-      </list>
-    </recent_temporary>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\WebstormProjects\MySchool" />
+      <recent name="C:\Users\asus\WebstormProjects\MySchool\bin" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ea9079ea-a31d-4a1f-ad9f-946b0b19fde0" name="Default Changelist" comment="" />
-      <created>1590760945846</created>
+      <changelist id="cee54406-0f62-43bf-9be2-4d57c3daeeae" name="Default Changelist" comment="" />
+      <created>1590757536057</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1590760945846</updated>
-      <workItem from="1590760947079" duration="8307000" />
-      <workItem from="1590824479977" duration="16289000" />
-      <workItem from="1590842935488" duration="25772000" />
-      <workItem from="1590911816026" duration="15998000" />
+      <updated>1590757536057</updated>
+      <workItem from="1590757537589" duration="800000" />
+      <workItem from="1590758345667" duration="12613000" />
+      <workItem from="1590828821825" duration="12146000" />
+      <workItem from="1590852663441" duration="9349000" />
+      <workItem from="1590870770062" duration="7096000" />
+      <workItem from="1590911119309" duration="18439000" />
     </task>
-    <task id="LOCAL-00001" summary="callback and connection">
-      <created>1590833041096</created>
+    <task id="LOCAL-00001" summary="html =&gt; ejs">
+      <created>1590760646451</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1590833041096</updated>
+      <updated>1590760646451</updated>
     </task>
-    <task id="LOCAL-00002" summary="callbacks added">
-      <created>1590834068963</created>
+    <task id="LOCAL-00002" summary="new versiomn of css">
+      <created>1590760855381</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1590834068963</updated>
+      <updated>1590760855381</updated>
     </task>
-    <task id="LOCAL-00003" summary="deleted a">
-      <created>1590837233851</created>
+    <task id="LOCAL-00003" summary="add variables in ejs code and some changes in styles">
+      <created>1590776428559</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1590837233851</updated>
+      <updated>1590776428560</updated>
     </task>
-    <task id="LOCAL-00004" summary="routes">
-      <created>1590841586516</created>
+    <task id="LOCAL-00004" summary="dependencies">
+      <created>1590777852617</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1590841586516</updated>
+      <updated>1590777852617</updated>
     </task>
-    <task id="LOCAL-00005" summary="get from db">
-      <created>1590849836874</created>
+    <task id="LOCAL-00005" summary="some little changes">
+      <created>1590778169880</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1590849836874</updated>
+      <updated>1590778169880</updated>
     </task>
-    <task id="LOCAL-00006" summary="user route">
-      <created>1590855031984</created>
+    <task id="LOCAL-00006" summary="new register page">
+      <created>1590783231749</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1590855031984</updated>
+      <updated>1590783231749</updated>
     </task>
-    <task id="LOCAL-00007" summary="changed routes">
-      <created>1590855735642</created>
+    <task id="LOCAL-00007" summary="small corrections">
+      <created>1590783330646</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1590855735642</updated>
+      <updated>1590783330646</updated>
     </task>
-    <task id="LOCAL-00008" summary="controllers changed">
-      <created>1590862220176</created>
+    <task id="LOCAL-00008" summary="new login page + small corrections in register page">
+      <created>1590786413931</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1590862220176</updated>
+      <updated>1590786413931</updated>
     </task>
-    <task id="LOCAL-00009" summary="bags fixed">
-      <created>1590864380573</created>
+    <task id="LOCAL-00009" summary="changed start page">
+      <created>1590830171970</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1590864380573</updated>
+      <updated>1590830171971</updated>
     </task>
-    <task id="LOCAL-00010" summary="bags fixed">
-      <created>1590869734347</created>
+    <task id="LOCAL-00010" summary="login page changes">
+      <created>1590830527684</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1590869734347</updated>
+      <updated>1590830527684</updated>
     </task>
-    <task id="LOCAL-00011" summary="bags fixed">
-      <created>1590870425061</created>
+    <task id="LOCAL-00011" summary="routers made + css changes">
+      <created>1590832617569</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1590870425061</updated>
+      <updated>1590832617570</updated>
     </task>
-    <task id="LOCAL-00012" summary="bags fixed">
-      <created>1590871028502</created>
+    <task id="LOCAL-00012" summary="login page">
+      <created>1590834703339</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1590871028502</updated>
+      <updated>1590834703339</updated>
     </task>
-    <task id="LOCAL-00013" summary="async work">
-      <created>1590916558352</created>
+    <task id="LOCAL-00013" summary="login page">
+      <created>1590834823493</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1590916558352</updated>
+      <updated>1590834823493</updated>
     </task>
-    <task id="LOCAL-00014" summary="notes added">
-      <created>1590919899662</created>
+    <task id="LOCAL-00014" summary="login">
+      <created>1590834913409</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1590919899662</updated>
+      <updated>1590834913409</updated>
     </task>
-    <task id="LOCAL-00015" summary="tasks fixed">
-      <created>1590920812644</created>
+    <task id="LOCAL-00015" summary="login">
+      <created>1590834984309</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1590920812644</updated>
+      <updated>1590834984309</updated>
     </task>
-    <task id="LOCAL-00016" summary="tasks fixed">
-      <created>1590920970041</created>
+    <task id="LOCAL-00016" summary="table in cabinet">
+      <created>1590841894392</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1590920970041</updated>
+      <updated>1590841894392</updated>
     </task>
-    <task id="LOCAL-00017" summary="date fixed">
-      <created>1590922203820</created>
+    <task id="LOCAL-00017" summary="table in cabinet">
+      <created>1590842006736</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1590922203820</updated>
+      <updated>1590842006736</updated>
     </task>
-    <task id="LOCAL-00018" summary="schedule render">
-      <created>1590923711188</created>
+    <task id="LOCAL-00018" summary="table in cabinet">
+      <created>1590842041122</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1590923711188</updated>
+      <updated>1590842041122</updated>
     </task>
-    <task id="LOCAL-00019" summary="schedule render">
-      <created>1590924626201</created>
+    <task id="LOCAL-00019" summary="table in rozklad">
+      <created>1590843216938</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1590924626201</updated>
+      <updated>1590843216938</updated>
     </task>
-    <task id="LOCAL-00020" summary="schedule render">
-      <created>1590925594310</created>
+    <task id="LOCAL-00020" summary="changes">
+      <created>1590864474559</created>
       <option name="number" value="00020" />
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1590925594310</updated>
+      <updated>1590864474560</updated>
     </task>
-    <task id="LOCAL-00021" summary="schedule render">
-      <created>1590927799053</created>
+    <task id="LOCAL-00021" summary="changes">
+      <created>1590864988385</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1590927799053</updated>
+      <updated>1590864988385</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="little changes">
+      <created>1590868962708</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1590868962708</updated>
+    </task>
+    <task id="LOCAL-00023" summary="total changes to work PROPERLY">
+      <created>1590877840838</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1590877840838</updated>
+    </task>
+    <task id="LOCAL-00024" summary="TOTALLY proper work">
+      <created>1590915145035</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1590915145035</updated>
+    </task>
+    <task id="LOCAL-00025" summary="FiNALLYYYY TOTALLY proper work foe Login &amp; Cabinet">
+      <created>1590919698871</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1590919698871</updated>
+    </task>
+    <task id="LOCAL-00026" summary="changes in events.ejs">
+      <created>1590920454218</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1590920454218</updated>
+    </task>
+    <task id="LOCAL-00027" summary="changes in events.ejs">
+      <created>1590921242741</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1590921242741</updated>
+    </task>
+    <task id="LOCAL-00028" summary="schedule">
+      <created>1590923312894</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1590923312894</updated>
+    </task>
+    <task id="LOCAL-00029" summary="ch">
+      <created>1590924983754</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1590924983754</updated>
+    </task>
+    <task id="LOCAL-00030" summary="ch">
+      <created>1590927744067</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1590927744067</updated>
+    </task>
+    <task id="LOCAL-00031" summary="final changes">
+      <created>1590928290756</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1590928290756</updated>
+    </task>
+    <task id="LOCAL-00032" summary="final changes">
+      <created>1590930090303</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1590930090303</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="callback and connection" />
-    <MESSAGE value="callbacks added" />
-    <MESSAGE value="deleted a" />
-    <MESSAGE value="routes" />
-    <MESSAGE value="get from db" />
-    <MESSAGE value="user route" />
-    <MESSAGE value="changed routes" />
-    <MESSAGE value="controllers changed" />
-    <MESSAGE value="bags fixed" />
-    <MESSAGE value="async work" />
-    <MESSAGE value="notes added" />
-    <MESSAGE value="tasks fixed" />
-    <MESSAGE value="date fixed" />
-    <MESSAGE value="schedule render" />
-    <option name="LAST_COMMIT_MESSAGE" value="schedule render" />
+    <MESSAGE value="html =&gt; ejs" />
+    <MESSAGE value="new versiomn of css" />
+    <MESSAGE value="add variables in ejs code and some changes in styles" />
+    <MESSAGE value="dependencies" />
+    <MESSAGE value="some little changes" />
+    <MESSAGE value="new register page" />
+    <MESSAGE value="small corrections" />
+    <MESSAGE value="new login page + small corrections in register page" />
+    <MESSAGE value="changed start page" />
+    <MESSAGE value="login page changes" />
+    <MESSAGE value="routers made + css changes" />
+    <MESSAGE value="login page" />
+    <MESSAGE value="login" />
+    <MESSAGE value="table in cabinet" />
+    <MESSAGE value="table in rozklad" />
+    <MESSAGE value="changes" />
+    <MESSAGE value="little changes" />
+    <MESSAGE value="total changes to work PROPERLY" />
+    <MESSAGE value="TOTALLY proper work" />
+    <MESSAGE value="FiNALLYYYY TOTALLY proper work foe Login &amp; Cabinet" />
+    <MESSAGE value="changes in events.ejs" />
+    <MESSAGE value="schedule" />
+    <MESSAGE value="ch" />
+    <MESSAGE value="final changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="final changes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="603" y="171" width="703" height="697" key="#addUser.returns_user1" timestamp="1590925268074">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590761252198">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="603" y="171" width="703" height="697" key="#addUser.returns_user1/0.27.1920.988@0.27.1920.988" timestamp="1590925268074" />
-    <state x="693" y="269" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590831221638">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1590761252198" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590864128528">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="693" y="269" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.988@0.27.1920.988" timestamp="1590831221638" />
-    <state x="499" y="76" width="912" height="888" key="CommitChangelistDialog2" timestamp="1590927798991">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590864128528" />
+    <state x="548" y="153" key="FileChooserDialogImpl" timestamp="1590779369995">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="76" width="912" height="888" key="CommitChangelistDialog2/0.27.1920.988@0.27.1920.988" timestamp="1590927798991" />
-    <state x="100" y="125" width="1720" height="790" key="DiffContextDialog" timestamp="1590925420507">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="548" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590779369995" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590788173600">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="100" y="125" width="1720" height="790" key="DiffContextDialog/0.27.1920.988@0.27.1920.988" timestamp="1590925420507" />
-    <state width="1897" height="318" key="GridCell.Tab.0.bottom" timestamp="1590842894177">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590788173600" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590788173599">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.0.bottom/0.27.1920.988@0.27.1920.988" timestamp="1590842894177" />
-    <state width="1897" height="318" key="GridCell.Tab.0.center" timestamp="1590842894176">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590788173599" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590788173599">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.0.center/0.27.1920.988@0.27.1920.988" timestamp="1590842894176" />
-    <state width="1897" height="318" key="GridCell.Tab.0.left" timestamp="1590842894176">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590788173599" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590788173599">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.0.left/0.27.1920.988@0.27.1920.988" timestamp="1590842894176" />
-    <state width="1897" height="318" key="GridCell.Tab.0.right" timestamp="1590842894177">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590788173599" />
+    <state x="27" y="57" width="1426" height="694" key="MergeDialog" timestamp="1590870628217">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.0.right/0.27.1920.988@0.27.1920.988" timestamp="1590842894177" />
-    <state width="1897" height="318" key="GridCell.Tab.1.bottom" timestamp="1590842894178">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="27" y="57" width="1426" height="694" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590870628217" />
+    <state x="619" y="174" width="388" height="263" key="MultipleFileMergeDialog" timestamp="1590870603235">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.1.bottom/0.27.1920.988@0.27.1920.988" timestamp="1590842894178" />
-    <state width="1897" height="318" key="GridCell.Tab.1.center" timestamp="1590842894178">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="619" y="174" width="388" height="263" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590870603235" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590930095328">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.1.center/0.27.1920.988@0.27.1920.988" timestamp="1590842894178" />
-    <state width="1897" height="318" key="GridCell.Tab.1.left" timestamp="1590842894177">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590930095328" />
+    <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590927832367">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.1.left/0.27.1920.988@0.27.1920.988" timestamp="1590842894177" />
-    <state width="1897" height="318" key="GridCell.Tab.1.right" timestamp="1590842894178">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1590927832367" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1590757862772">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.1.right/0.27.1920.988@0.27.1920.988" timestamp="1590842894178" />
-    <state width="1897" height="318" key="GridCell.Tab.2.bottom" timestamp="1590842894179">
-      <screen x="0" y="27" width="1920" height="988" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1590757862772" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1590923701997">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1897" height="318" key="GridCell.Tab.2.bottom/0.27.1920.988@0.27.1920.988" timestamp="1590842894179" />
-    <state width="1897" height="318" key="GridCell.Tab.2.center" timestamp="1590842894179">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state width="1897" height="318" key="GridCell.Tab.2.center/0.27.1920.988@0.27.1920.988" timestamp="1590842894179" />
-    <state width="1897" height="318" key="GridCell.Tab.2.left" timestamp="1590842894178">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state width="1897" height="318" key="GridCell.Tab.2.left/0.27.1920.988@0.27.1920.988" timestamp="1590842894178" />
-    <state width="1897" height="318" key="GridCell.Tab.2.right" timestamp="1590842894179">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state width="1897" height="318" key="GridCell.Tab.2.right/0.27.1920.988@0.27.1920.988" timestamp="1590842894179" />
-    <state width="1897" height="318" key="GridCell.Tab.3.bottom" timestamp="1590842894180">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state width="1897" height="318" key="GridCell.Tab.3.bottom/0.27.1920.988@0.27.1920.988" timestamp="1590842894180" />
-    <state width="1897" height="318" key="GridCell.Tab.3.center" timestamp="1590842894180">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state width="1897" height="318" key="GridCell.Tab.3.center/0.27.1920.988@0.27.1920.988" timestamp="1590842894180" />
-    <state width="1897" height="318" key="GridCell.Tab.3.left" timestamp="1590842894179">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state width="1897" height="318" key="GridCell.Tab.3.left/0.27.1920.988@0.27.1920.988" timestamp="1590842894179" />
-    <state width="1897" height="318" key="GridCell.Tab.3.right" timestamp="1590842894180">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state width="1897" height="318" key="GridCell.Tab.3.right/0.27.1920.988@0.27.1920.988" timestamp="1590842894180" />
-    <state x="187" y="110" width="1536" height="820" key="MergeDialog" timestamp="1590919739742">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state x="187" y="110" width="1536" height="820" key="MergeDialog/0.27.1920.988@0.27.1920.988" timestamp="1590919739742" />
-    <state x="555" y="256" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1590927816083">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state x="555" y="256" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.988@0.27.1920.988" timestamp="1590927816083" />
-    <state x="731" y="435" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590927756518">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state x="731" y="435" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.988@0.27.1920.988" timestamp="1590927756518" />
-    <state x="100" y="125" width="1720" height="790" key="dock-window-1" timestamp="1590834541712">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state x="100" y="125" width="1720" height="790" key="dock-window-1/0.27.1920.988@0.27.1920.988" timestamp="1590834541712" />
-    <state x="100" y="125" width="1720" height="790" key="dock-window-2" timestamp="1590834541712">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state x="100" y="125" width="1720" height="790" key="dock-window-2/0.27.1920.988@0.27.1920.988" timestamp="1590834541712" />
-    <state x="624" y="237" key="run.anything.popup" timestamp="1590849839402">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state x="624" y="237" key="run.anything.popup/0.27.1920.988@0.27.1920.988" timestamp="1590849839402" />
-    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1590917450675">
-      <screen x="0" y="27" width="1920" height="988" />
-    </state>
-    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup/0.27.1920.988@0.27.1920.988" timestamp="1590917450675" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test/template.js</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1590923701997" />
   </component>
 </project>

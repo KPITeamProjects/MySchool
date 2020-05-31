@@ -1,0 +1,49 @@
+Index: routes/studentRouter.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const express = require(\"express\");\r\nconst studentController = require(\"../Controllers/studentController\");\r\nconst studentRouter = express.Router();\r\n\r\nstudentRouter.get('/cabinet/:id', studentController.fillInfo)\r\nstudentRouter.get('/:id/tasks', studentController.fillTasks)\r\nstudentRouter.get('/:id/schedule', studentController.getSchedule)\r\nmodule.exports = studentRouter;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- routes/studentRouter.js	(revision b16740167a20a3e01e187cc9339c2cc14135c1a5)
++++ routes/studentRouter.js	(date 1590870603838)
+@@ -2,7 +2,7 @@
+ const studentController = require("../Controllers/studentController");
+ const studentRouter = express.Router();
+ 
+-studentRouter.get('/cabinet/:id', studentController.fillInfo)
++studentRouter.get('/:id/cabinet', studentController.fillInfo)
+ studentRouter.get('/:id/tasks', studentController.fillTasks)
+ studentRouter.get('/:id/schedule', studentController.getSchedule)
+ module.exports = studentRouter;
+Index: Controllers/loginController.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const user = require('../models/User')\r\n\r\n\r\nmodule.exports.login = function (request, response) {\r\n    response.render('login', { title: 'Логін' })\r\n}\r\n\r\n\r\nmodule.exports.register = function (request, response) {\r\n    response.render('register', { title: 'Розклад'})\r\n}\r\n\r\nmodule.exports.checkForUser = function (request, response) {\r\n    let userLogin = request.body.login\r\n    let password = request.body.password\r\n\r\n    user.getUserByMail(userLogin,function (user, err) {\r\n        if (err) alert(\"error login or password\") ;\r\n        if (password.equals(user.password)){\r\n            response.redirect(\"/student/\" + user.id + \"/cabinet\")\r\n        }\r\n    })\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Controllers/loginController.js	(revision b16740167a20a3e01e187cc9339c2cc14135c1a5)
++++ Controllers/loginController.js	(date 1590870628203)
+@@ -10,14 +10,16 @@
+     response.render('register', { title: 'Розклад'})
+ }
+ 
+-module.exports.checkForUser = function (request, response) {
+-    let userLogin = request.body.login
++function checkForUser(request, response) {
++    let login = request.body.login
+     let password = request.body.password
+ 
+-    user.getUserByMail(userLogin,function (user, err) {
++    user.getUserByMail(login(),function (info, err) {
+         if (err) alert("error login or password") ;
+-        if (password.equals(user.password)){
+-            response.redirect("/student/" + user.id + "/cabinet")
++        if (password.equals(password)){
++            response.redirect("/student/cabinet"+ info.id)
+         }
+     })
+ }
++
++module.exports.checkForUser = checkForUser;
