@@ -100,7 +100,7 @@ module.exports.getAllTasksByCourse = function (courseId, callback) {
  */
 
 function getAllDoneTasksForStudent(studentId, callback) {
-    connection.query('SELECT * FROM  tasks WHERE studentId=? AND progress=1',function(err, results){
+    connection.query('SELECT * FROM  tasks WHERE studentId=? AND progress=1',studentId,function(err, results){
         callback(results, err)
     });
 }
