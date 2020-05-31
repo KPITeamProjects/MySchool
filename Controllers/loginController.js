@@ -17,7 +17,6 @@ module.exports.checkForUser = function (request, response) {
         if (password === user.password){
             request.session.loggedin = true;
             request.session.userId = user.idUser;
-            response.send(user.idUser);
             response.redirect("/student")
 
         }
