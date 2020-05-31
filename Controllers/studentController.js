@@ -9,15 +9,16 @@ const schedule = require('../models/Schedule')
 
 module.exports.fillInfo = function (request,response) {
     const id = request.session.studentId
+    response.send(id)
     student.getUser(id, function (user,err) {
-        if(err) alert("Not Found");
+        if(err) response.send(id);
         mark.configMarksTableForUser(id, function (markTable,err) {
             info.getUserInfo(id, function (userInfo, error) {
                 let splitedName = userInfo.name.split(' ')
                 myClass.getClass(user.class_idclass, function (classInfo, err) {
                     mark.calculateMiddleMark(id,function (middle, error) {
                         school.getSchool(user.school, function (mySchool,err) {
-                            response.render('cabinet.ejs', {
+                            response.render('/cabinet.ejs', {
                                 mark:middle,
                                 surname:splitedName[0],
                                 name:splitedName[1],
