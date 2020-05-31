@@ -55,7 +55,12 @@ module.exports.getSchedule = function (request, response) {
     const id = request.session.userId
     schedule.getSchedule(id,function (thisSchedule,err) {
         response.render('rozklad.ejs', {
-            userData:thisSchedule
+            dataMonday: thisSchedule.monday.split(' '),
+            dataTuesday: thisSchedule.tuesday.split(' '),
+            dataWednesday: thisSchedule.wednesday.split(' '),
+            dataThursday: thisSchedule.thursday.split(' '),
+            dataFriday: thisSchedule.friday.split(' '),
+            dataSaturday: thisSchedule.saturday.split(' ')
         })
     })
 };
