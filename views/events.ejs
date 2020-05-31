@@ -15,12 +15,15 @@
             <tr id="head_eve">
                 <th>Необхідно виконати</th>
             </tr>
+            <%
+            if(userData.length!=0){
+                var i=1;
+            userData.forEach(function(data){
+            %>
             <tr>
-                <td><%=lesson_name+": "+task%></td>
-            <tr>
-            <tr>
-                <td><%=lesson_name+": "+task%></td>
-            <tr>
+                <td><%=lesson_name+": "+task+" "+ deadline%></td>
+            </tr>
+            <%  i++; })} %>
         </table>
     </div>
 </div>
