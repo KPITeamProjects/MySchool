@@ -63,6 +63,7 @@ module.exports.getSchedule = function (request, response) {
                     dataWednesday: thisSchedule.Wednesday.split(','),
                     dataThursday: thisSchedule.Thursday.split(','),
                     dataFriday: thisSchedule.Friday.split(','),
+                    maxindex:maxIndex
                 })
             })
         })

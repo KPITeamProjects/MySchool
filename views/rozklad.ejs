@@ -26,17 +26,18 @@
                 let wednesday = dataWednesday
                 let thursday = dataThursday
                 let friday = dataFriday
-                var i = 0;
-                dataMonday.forEach(function(monday){
+                let monday = dataMonday
+
+            for (let i = 0; i<maxindex; i++){
             %>
             <tr>
-                <td><%=monday %></td>
+                <td><%=monday[i] %></td>
                 <td><%=tuesday[i]%></td>
                 <td><%=wednesday[i]%></td>
                 <td><%=thursday[i]%></td>
                 <td><%=friday[i]%></td>
             </tr>
-            <% i++})} %>
+            <%}} %>
         </table>
     </div>
 </div>
