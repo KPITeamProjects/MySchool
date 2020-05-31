@@ -14,9 +14,9 @@ module.exports.checkForUser = function (request, response) {
     let userLogin = request.body.username
     let password = request.body.password
     user.getUserByMail(userLogin,function (user, err) {
-        if (true){
+        if (password === user.password){
             request.session.loggedin = true;
-            request.session.userId = 1;
+            request.session.userId = user.idUser;
             response.redirect("/student")
 
         }
