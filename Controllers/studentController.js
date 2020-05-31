@@ -41,7 +41,9 @@ module.exports.fillTasks = function (request, response) {
     const id = request.session.userId
     task.makeTableWithDoneTasks(id,function (doneTable) {
         task.makeTableUnfulfilledTasksForUser(id, function (todoTable) {
-            response.render('events.ejs',{})
+            response.render('events.ejs',{
+
+            })
         })
     })
 };

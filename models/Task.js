@@ -1,11 +1,12 @@
 const connection = require("../config/Connection").connection
+const course = require('./Course')
 
 class TaskForm{
 
     constructor(deadline,text, subject) {
         this.deadline = deadline
-        this.text = text
-        this.subject = subject
+        this.task = text
+        this.lesson_name = subject
     }
 }
 
@@ -99,13 +100,13 @@ module.exports.getAllTasksByCourse = function (courseId, callback) {
  */
 
 function getAllDoneTasksForStudent(studentId, callback) {
-    connection.query('SELECT * FROM  tasks WHERE progress=1',function(err, results){
+    connection.query('SELECT * FROM  tasks WHERE studentId=? AND progress=1',function(err, results){
         callback(results, err)
     });
 }
 
 function getUnfulfilledTasksForUser(studentId, callback){
-    connection.query('SELECT * FROM  tasks WHERE studentId=?, progress=0',studentId,function(err, results){
+    connection.query('SELECT * FROM  tasks WHERE studentId=? AND progress=0',studentId,function(err, results){
         callback(results, err)
     });
 }
