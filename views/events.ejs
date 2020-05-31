@@ -21,7 +21,7 @@
             userData.forEach(function(data){
             %>
             <tr>
-                <td><%=lesson_name+": "+task+" "+ deadline%></td>
+                <td><%=i+") "+lesson_name+": "+task+" "+ deadline%></td>
             </tr>
             <%  i++; })} %>
         </table>
@@ -32,10 +32,17 @@
         <table id="to-do2">
             <tr id="head_eve2">
                 <th>Виконано</th>
+                <th></th>
             </tr>
+            <%
+            if(userdoneData.length!=0){
+                var ii=1;
+            userdoneData.forEach(function(data){
+            %>
             <tr>
-                <td><%=lesson_name+": "+task%></td>
-            <tr>
+                <td><%=lesson_name+": "+task+" "+ deadline%></td>
+            </tr>
+            <%  ii++; })} %>
         </table>
     </div>
 </div>

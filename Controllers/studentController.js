@@ -42,7 +42,9 @@ module.exports.fillTasks = function (request, response) {
     task.makeTableWithDoneTasks(id,function (doneTable) {
         task.makeTableUnfulfilledTasksForUser(id, function (todoTable) {
             response.render('events.ejs',{
-
+                userData:todoTable,
+                userdoneData:doneTable,
+                title:"Завдання"
             })
         })
     })
