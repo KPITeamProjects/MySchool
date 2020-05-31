@@ -114,6 +114,7 @@ body{
   text-align: center;
   width: 17%;
   padding: 10px;
+  empty-cells: hide;
   font-family: "Microsoft JhengHei", sans-serif;
   height: 70px;
   color: white;

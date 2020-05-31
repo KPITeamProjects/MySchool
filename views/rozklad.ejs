@@ -20,46 +20,23 @@
                 <th>Четвер</th>
                 <th>П'ятниця</th>
             </tr>
-
-            <tr>
-                <%
-                if(dataMonday.length!=0){
+            <%
+            if(dataMonday.length!=0){
+                let tuesday = dataTuesday
+                let wednesday = dataWednesday
+                let thursday = dataThursday
+                let friday = dataFriday
+                var i = 0;
                 dataMonday.forEach(function(monday){
-                %>
-                <td><%=monday%></td>
-                <% })} %>
-                <%
-                if(dataTuesday.length!=0){
-                dataTuesday.forEach(function(tuesday){
-                %>
-                <td><%=tuesday%></td>
-                <% })} %>
-                <%
-                if(dataWednesday.length!=0){
-                dataWednesday.forEach(function(wednesday){
-                %>
-                <td><%=wednesday%></td>
-                <% })} %>
-                <%
-                if(dataThursday.length!=0){
-                dataThursday.forEach(function(thursday){
-                %>
-                <td><%=thursday%></td>
-                <% })} %>
-                <%
-                if(dataFriday.length!=0){
-                dataFriday.forEach(function(friday){
-                %>
-                <td><%=friday%></td>
-                <% })} %>
-                <%
-                if(dataSaturday.length!=0){
-                dataSaturday.forEach(function(saturday){
-                %>
-                <td><%=saturday%></td>
-                <% })} %>
+            %>
+            <tr>
+                <td><%=monday %></td>
+                <td><%=tuesday[i]%></td>
+                <td><%=wednesday[i]%></td>
+                <td><%=thursday[i]%></td>
+                <td><%=friday[i]%></td>
             </tr>
-
+            <% i++})} %>
         </table>
     </div>
 </div>
