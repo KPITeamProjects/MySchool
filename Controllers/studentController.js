@@ -56,6 +56,7 @@ module.exports.getSchedule = function (request, response) {
     student.getUser(id, function (thisStudent,er) {
         myClass.getClass(thisStudent[0].class_idclass, function (thisClass, err) {
             schedule.getSchedule(thisClass[0].schedule_idschedule, function (thisSchedule,err) {
+                let maxIndex = schedule.findMaxIndex(thisSchedule)
                 response.render('rozklad.ejs', {
                     dataMonday: thisSchedule.Monday.split(','),
                     dataTuesday: thisSchedule.Tuesday.split(','),
@@ -63,7 +64,6 @@ module.exports.getSchedule = function (request, response) {
                     dataThursday: thisSchedule.Thursday.split(','),
                     dataFriday: thisSchedule.Friday.split(','),
                 })
-
             })
         })
     })

@@ -120,3 +120,13 @@ module.exports.deleteSchedule = function (id) {
     });
 }
 
+module.exports.findMaxIndex = function (schedule) {
+    let monday = schedule.Monday.split(',').length
+    let tuesday = schedule.Tuesday.split(',').length
+    let wednesday = schedule.Wednesday.split(',').length
+    let thursday = schedule.Thursday.split(',').length
+    let friday =  schedule.Friday.split(',').length
+
+    return Math.max(monday,tuesday,wednesday,thursday,friday)
+}
+
