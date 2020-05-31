@@ -146,9 +146,13 @@ module.exports.calculateMiddleMark = function(id,callback){
     getAllMarksOfStudent(id, function (info, err) {
         let marks = info
         var result = 0;
+        var counter = 0;
         try {
-            marks.forEach(mark=>result+=mark.value)
-            callback(mark)
+            marks.forEach(function(mark){
+                result+=mark.value
+                counter++;
+            })
+            setTimeout(()=>callback(result/counter), 1000)
         }catch (e) {
             callback(marks.value)
         }
@@ -169,7 +173,8 @@ module.exports.configMarksTableForUser = function (id, callback) {
             course.getCourse(element.courseId, function (lesson, error) {
                 user.getUser(element.teacherId, function (teacher, error) {
                     userInfo.getUserInfo(teacher[0].idUserInfo, function (info,err) {
-                        table.push(new MarkConfig(lesson[0].info,element.date,info[0].name,element.value))
+                        let dating = element.date.getDate()+"."+element.date.getMonth()+"."+element.date.getFullYear()
+                        table.push(new MarkConfig(lesson[0].info,dating,info[0].name,element.value))
                     })
                 })
             }))

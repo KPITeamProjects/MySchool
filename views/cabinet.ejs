@@ -13,7 +13,7 @@
     <div class="inherit-body-cab">
         <div class="mark-holder">
             <span><%=mark%></span>
-            Середній бал
+            <p>Середній бал</p>
         </div>
         <ul class="about-user">
             <li><%=surname%></li>
@@ -34,6 +34,7 @@
                 <th>Дата</th>
                 <th>Ім'я Викладача</th>
                 <th>Оцінка</th>
+                <th>Комментарій</th>
                 <%
             if(userData.length!=0){
                 var i=1;
@@ -44,6 +45,7 @@
                 <td><%=data.date %></td>
                 <td><%=data.teacher_name %></td>
                 <td><%=data.value%></td>
+                <td><%=data.commen%></td>
             </tr>
             <%  i++; })} %>
         </table>
