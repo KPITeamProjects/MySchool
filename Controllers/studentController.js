@@ -53,14 +53,19 @@ module.exports.fillTasks = function (request, response) {
 
 module.exports.getSchedule = function (request, response) {
     const id = request.session.userId
-    schedule.getSchedule(id,function (thisSchedule,err) {
-        response.render('rozklad.ejs', {
-            dataMonday: thisSchedule.monday.split(' '),
-            dataTuesday: thisSchedule.tuesday.split(' '),
-            dataWednesday: thisSchedule.wednesday.split(' '),
-            dataThursday: thisSchedule.thursday.split(' '),
-            dataFriday: thisSchedule.friday.split(' '),
-            dataSaturday: thisSchedule.saturday.split(' ')
+    student.getUser(id, function (thisStudent,er) {
+        myClass.getClass(thisStudent[0].class_idclass, function (thisClass, err) {
+            schedule.getSchedule(thisClass[0].schedule_idschedule, function (thisSchedule,err) {
+                response.render('rozklad.ejs', {
+                    dataMonday: thisSchedule.monday.split(' '),
+                    dataTuesday: thisSchedule.tuesday.split(' '),
+                    dataWednesday: thisSchedule.wednesday.split(' '),
+                    dataThursday: thisSchedule.thursday.split(' '),
+                    dataFriday: thisSchedule.friday.split(' '),
+                    dataSaturday: thisSchedule.saturday.split(' ')
+                })
+
+            })
         })
     })
 };
