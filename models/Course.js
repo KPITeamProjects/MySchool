@@ -1,4 +1,4 @@
-const connection = require("../config/Connection").connection
+const pool = require("../config/Connection").pool
 /** Class representing a course. */
 module.exports = class Course {
     /**
@@ -21,10 +21,13 @@ module.exports = class Course {
 module.exports.addCourse = function (course) {
     const sql = `INSERT INTO course(idcourse, info) VALUES(?,?)`;
 
-    connection.query(sql,[course.id, course.info], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+    pool.execute(sql, [course.id, course.info])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Get course to data base.
@@ -32,14 +35,21 @@ module.exports.addCourse = function (course) {
  */
 module.exports.getCourse = function (id, callback) {
 
-    connection.query('SELECT * FROM course WHERE idcourse=?',id, function(err, results){
-        callback(results,err)
-    });
+    pool.execute('SELECT * FROM course WHERE idcourse=?', [id])
+        .then(result =>{
+            callback(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 
 module.exports.getNameOfTheCourse = function (id, callback) {
-
-    connection.query('SELECT info FROM course WHERE idcourse=?',id, function(err, results){
-        callback(results,err)
-    });
+    pool.execute('SELECT info FROM course WHERE idcourse=?', [id])
+        .then(result =>{
+            callback(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }

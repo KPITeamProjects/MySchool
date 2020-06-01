@@ -1,4 +1,4 @@
-const connection = require("../config/Connection").connection
+const pool = require("../config/Connection").pool
 const course = require('./Course')
 const user = require('./User')
 const userInfo = require('./UserInfo')
@@ -41,10 +41,14 @@ class Mark{
  */
 module.exports.addMark = function (mark) {
     const script = 'INSERT INTO marks(idMark, value, date,notes,courseId, studentId,teacherId) VALUES(?,?,?,?,?,?,?)'
-    connection.query(script,[mark.id,mark.value,mark.date,mark.notes,mark.courseId,mark.studentId,mark.teacherId], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [mark.id,mark.value,mark.date,mark.notes,mark.courseId,mark.studentId,mark.teacherId])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit mark value in data base.
@@ -52,10 +56,14 @@ module.exports.addMark = function (mark) {
  */
 module.exports.editMarkValue = function (newValue, markId) {
     const script = 'UPDATE marks SET value=? WHERE idMark=?'
-    connection.query(script,[newValue, markId], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [newValue, markId])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit date of mark in data base.
@@ -63,10 +71,14 @@ module.exports.editMarkValue = function (newValue, markId) {
  */
 module.exports.editMarkDate = function (newDate, markId) {
     const script = 'UPDATE marks SET date=? WHERE idMark=?'
-    connection.query(script,[newDate, markId], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [newDate, markId])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit notes for mark in data base.
@@ -74,10 +86,14 @@ module.exports.editMarkDate = function (newDate, markId) {
  */
 module.exports.editMarkNotes = function (newNotes, markId) {
     const script = 'UPDATE marks SET notes=? WHERE idMark=?'
-    connection.query(script,[newNotes, markId], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [newNotes, markId])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit courseId for mark in data base.
@@ -85,10 +101,14 @@ module.exports.editMarkNotes = function (newNotes, markId) {
  */
 module.exports.editMarkCourseId = function (newCourse, markId) {
     const script = 'UPDATE marks SET courseId=? WHERE idMark=?'
-    connection.query(script,[newCourse, markId], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [newCourse, markId])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit studentId for mark in data base.
@@ -96,10 +116,14 @@ module.exports.editMarkCourseId = function (newCourse, markId) {
  */
 module.exports.editMarkStudentId = function (newStudent, markId) {
     const script = 'UPDATE marks SET studentId=? WHERE idMark=?'
-    connection.query(script,[newStudent, markId], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [newStudent, markId])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit teacherId for mark in data base.
@@ -107,16 +131,25 @@ module.exports.editMarkStudentId = function (newStudent, markId) {
  */
 module.exports.editMarkTeacherId = function (newTeacherId, markId) {
     const script = 'UPDATE marks SET teacherId=? WHERE idMark=?'
-    connection.query(script,[newTeacherId, markId], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [newTeacherId, markId])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 
 function getAllMarksOfStudent(studentId, callback) {
-    connection.query('SELECT * FROM  marks WHERE studentId=?',studentId,function(err, results){
-        callback(results,err)
-    });
+
+    pool.execute('SELECT * FROM  marks WHERE studentId=?', [studentId])
+        .then(result =>{
+            callback(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Get all marks of specific student by course
@@ -124,19 +157,31 @@ function getAllMarksOfStudent(studentId, callback) {
  * @return callback function
  */
 module.exports.getAllMarksOfStudentByCourse = function(studentId, courseId, callback) {
-    connection.query('SELECT * FROM  marks WHERE studentId=?, courseId=?',[studentId, courseId],function(err, results){
-        callback(results,err)
-    });
+
+    const script = 'SELECT * FROM  marks WHERE studentId=? AND courseId=?'
+
+    pool.execute(script, [studentId, courseId])
+        .then(result =>{
+            callback(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 
 /**
  * Get all marks by specific course from data base.
  * @return callback function
  */
-module.exports.getAllMarksOfByCourse = function (courseId, callback) {
-    connection.query('SELECT * FROM  marks WHERE courseId=?', courseId,function(err, results){
-        callback(results,err)
-    });
+module.exports.getAllMarksByCourse = function (courseId, callback) {
+
+    pool.execute('SELECT * FROM  marks WHERE courseId=?', [courseId])
+        .then(result =>{
+            callback(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Calculate average value of all marks
@@ -173,7 +218,7 @@ module.exports.configMarksTableForUser = function (id, callback) {
         mark.forEach(element =>
             course.getCourse(element.courseId, function (lesson, error) {
                 user.getUser(element.teacherId, function (teacher, error) {
-                    userInfo.getUserInfo(teacher[0].idUserInfo, function (info,err) {
+                    userInfo.getUserInfo(teacher.idUserInfo, function (info,err) {
                         let dating = element.date.getDate()+"."+element.date.getMonth()+"."+element.date.getFullYear()
                         table.push(new MarkConfig(lesson[0].info,dating,info[0].name,element.value, element.notes))
                     })

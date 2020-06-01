@@ -1,4 +1,4 @@
-const connection = require("../config/Connection").connection
+const pool = require("../config/Connection").pool
 /** Class representing a class. */
 module.exports = class Class{
     /**
@@ -13,7 +13,6 @@ module.exports = class Class{
         this.id = id;
         this.name = name;
         this.schedule = schedule;
-        this.tasks = tasks;
     }
 }
 /**
@@ -23,10 +22,13 @@ module.exports = class Class{
 module.exports.addClass = function (myClass) {
     const sql = `INSERT INTO class(idclass,schedule_idschedule,Name) VALUES(?,?,?)`;
 
-    connection.query(sql,[myClass.id, myClass.schedule, myClass.name], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+    pool.execute(sql, [myClass.id, myClass.schedule, myClass.name])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Get class from data base.
@@ -34,7 +36,11 @@ module.exports.addClass = function (myClass) {
  */
 module.exports.getClass = function (id, callback) {
 
-    connection.query('SELECT * FROM class WHERE idclass=?',id, function(err, results){
-        callback(results,err)
-    });
+    pool.execute('SELECT * FROM class WHERE idclass=?', [id])
+        .then(result =>{
+            callback(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }

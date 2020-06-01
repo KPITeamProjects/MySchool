@@ -10,13 +10,15 @@ const schedule = require('../models/Schedule')
 module.exports.fillInfo = function (request,response) {
     const id = request.session.userId
     student.getUser(id, function (user,err) {
-        if(err) response.send(id);
+
         mark.configMarksTableForUser(id, function (markTable,err) {
+
             info.getUserInfo(id, function (userInfo, error) {
+
                 let splitedName = userInfo[0].name.split(' ')
-                myClass.getClass(user[0].class_idclass, function (classInfo, err) {
+                myClass.getClass(user.class_idclass, function (classInfo, err) {
                     mark.calculateMiddleMark(id,function (middle, error) {
-                        school.getSchool(user[0].school, function (mySchool,err) {
+                        school.getSchool(user.school, function (mySchool,err) {
                             response.render('cabinet.ejs', {
                                 mark:middle,
                                 surname:splitedName[0],
@@ -54,7 +56,7 @@ module.exports.fillTasks = function (request, response) {
 module.exports.getSchedule = function (request, response) {
     const id = request.session.userId
     student.getUser(id, function (thisStudent,er) {
-        myClass.getClass(thisStudent[0].class_idclass, function (thisClass, err) {
+        myClass.getClass(thisStudent.class_idclass, function (thisClass, err) {
             schedule.getSchedule(thisClass[0].schedule_idschedule, function (thisSchedule,err) {
                 let maxIndex = schedule.findMaxIndex(thisSchedule)
                 response.render('rozklad.ejs', {

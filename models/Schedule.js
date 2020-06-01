@@ -1,4 +1,4 @@
-const connection = require("../config/Connection").connection
+const pool = require("../config/Connection").pool
 /** Class representing a schedule. */
 module.exports = class Schedule {
     /**
@@ -26,32 +26,47 @@ module.exports = class Schedule {
  * @return void
  */
 module.exports.addSchedule = function(schedule){
+
     const script = 'INSERT INTO schedules(idschedule,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday) VALUES(?,?,?,?,?,?,?)'
-    connection.query(script,[schedule.id,schedule.monday,schedule.tuesday,schedule.wednesday, schedule.thursday,
-    schedule.friday,schedule.saturday], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [schedule.id,schedule.monday,schedule.tuesday,schedule.wednesday, schedule.thursday,
+        schedule.friday,schedule.saturday])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Get schedule from data base.
  * @return callback function
  */
 module.exports.getSchedule = function(id,callback){
-    connection.query('SELECT * FROM  schedules WHERE idschedule=?',id,function(err, results){
-        callback(results[0], err)
-    });
+
+    pool.execute('SELECT * FROM  schedules WHERE idschedule=?', [id])
+        .then(result =>{
+            callback(result[0][0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Change schedule for monday in data base.
  * @return void
  */
 module.exports.changeScheduleMonday = function (id,day) {
+
     const script = 'UPDATE schedules SET Monday=? WHERE idschedule=?'
-    connection.query(script,[day, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [day, id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Change schedule for tuesday in data base.
@@ -59,10 +74,14 @@ module.exports.changeScheduleMonday = function (id,day) {
  */
 module.exports.changeScheduleTuesday = function (id,day) {
     const script = 'UPDATE schedules SET Tuesday=? WHERE idschedule=?'
-    connection.query(script,[day, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [day, id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Change schedule for wednesday in data base.
@@ -70,10 +89,14 @@ module.exports.changeScheduleTuesday = function (id,day) {
  */
 module.exports.changeScheduleWednesday = function (id,day) {
     const script = 'UPDATE schedules SET Wednesday=? WHERE idschedule=?'
-    connection.query(script,[day, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [day, id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Change schedule for thursday in data base.
@@ -81,10 +104,14 @@ module.exports.changeScheduleWednesday = function (id,day) {
  */
 module.exports.changeScheduleThursday = function (id,day) {
     const script = 'UPDATE schedules SET Thursday=? WHERE idschedule=?'
-    connection.query(script,[day, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [day, id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Change schedule for friday in data base.
@@ -92,10 +119,14 @@ module.exports.changeScheduleThursday = function (id,day) {
  */
 module.exports.changeScheduleFriday = function (id,day) {
     const script = 'UPDATE schedules SET Friday=? WHERE idschedule=?'
-    connection.query(script,[day, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [day, id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Change schedule for saturday in data base.
@@ -103,10 +134,14 @@ module.exports.changeScheduleFriday = function (id,day) {
  */
 module.exports.changeScheduleSaturday = function (id,day) {
     const script = 'UPDATE schedules SET Saturday=? WHERE idschedule=?'
-    connection.query(script,[day, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [day, id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Delete schedule from data base.
@@ -114,10 +149,14 @@ module.exports.changeScheduleSaturday = function (id,day) {
  */
 module.exports.deleteSchedule = function (id) {
     const sql = 'DELETE FROM schedules WHERE idschedule=?'
-    connection.query(sql,id, function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(sql, [id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 
 module.exports.findMaxIndex = function (schedule) {

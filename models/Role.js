@@ -1,4 +1,4 @@
-const connection = require("../config/Connection").connection
+const pool = require("../config/Connection").pool
 /** Class representing a role. */
 module.exports = class Role{
     /**
@@ -17,19 +17,28 @@ module.exports = class Role{
  */
 module.exports.addRole = function (role) {
     const script = 'INSERT INTO roles(idRole, post) VALUES(?,?)'
-    connection.query(script,[role.id,role.position], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [role.id,role.position])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Get role from data base.
  * @return callback function
  */
 module.exports.getRole = function(id, callback){
-    connection.query('SELECT * FROM  roles WHERE courseId=?',courseId,function(err, results){
-        callback(results[0], err)
-    });
+
+    pool.execute('SELECT * FROM  roles WHERE idRole=?', [id])
+        .then(result =>{
+            callback(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit user position in data base.
@@ -37,10 +46,14 @@ module.exports.getRole = function(id, callback){
  */
 module.exports.editPosition = function(position, id){
     const script = 'UPDATE roles SET post=? WHERE idRole=?'
-    connection.query(script,[position, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script, [position, id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Delete user role from data base.
@@ -48,8 +61,12 @@ module.exports.editPosition = function(position, id){
  */
 module.exports.deleteRole = function (id) {
     const sql = 'DELETE FROM roles WHERE idRole=?'
-    connection.query(sql,id, function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(sql, [id])
+        .then(result =>{
+            console.log(result[0])
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }

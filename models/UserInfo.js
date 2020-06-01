@@ -1,4 +1,4 @@
-const connection = require("../config/Connection").connection
+const pool = require("../config/Connection").pool
 /** Class representing a userInfo. */
 module.exports.UserInfo = class UserInfo {
     /**
@@ -20,9 +20,14 @@ module.exports.UserInfo = class UserInfo {
  * @return callback function
  */
 module.exports.getUserInfo = function (id, callback) {
-    connection.query('SELECT * FROM users_info WHERE iduserInfo=?',id,function(err, results){
-        callback(results, err)
-    });
+
+    pool.execute('SELECT * FROM users_info WHERE iduserInfo=?', [id])
+        .then(result =>{
+            callback(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Add userInfo to data base.
@@ -30,10 +35,15 @@ module.exports.getUserInfo = function (id, callback) {
  */
 module.exports.addUserInfo = function (userInfo) {
     const script = 'INSERT INTO users_info(idUserInfo, userId, date,name) VALUES(?,?,?,?)'
-    connection.query(script,[userInfo.id, userInfo.userId, userInfo.date, userInfo.name], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script,[userInfo.id, userInfo.userId, userInfo.date, userInfo.name])
+        .then(result =>{
+            console.log(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+
 }
 /**
  * Edit user name in data base.
@@ -41,10 +51,14 @@ module.exports.addUserInfo = function (userInfo) {
  */
 module.exports.changeUserName = function (newName, idInfo) {
     const sql = 'UPDATE users_info SET name=? WHERE idUserInfo=?'
-    connection.query(sql,[newName,idInfo], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(sql,[newName,idInfo])
+        .then(result =>{
+            console.log(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit user date in data base.
@@ -52,9 +66,13 @@ module.exports.changeUserName = function (newName, idInfo) {
  */
 module.exports.changeUserDate = function (newDate, idInfo) {
     const sql = 'UPDATE users_info SET date=? WHERE idUserInfo=?'
-    connection.query(sql,[newDate,idInfo], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(sql,[newDate,idInfo])
+        .then(result =>{
+            console.log(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 

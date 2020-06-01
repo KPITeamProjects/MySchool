@@ -1,4 +1,4 @@
-const connection = require("../config/Connection").connection
+const pool = require("../config/Connection").pool
 /** Class representing a user. */
 module.exports.User = class User {
     /**
@@ -65,47 +65,67 @@ module.exports.editPassword = function(newPassword, id){
  * @return callback function
  */
 module.exports.getAllUsers = function (callback) {
-    connection.query('SELECT * FROM users',function(err, results){
-        callback(results, err)
-    });
+    pool.execute('SELECT * FROM users')
+        .then(result =>{
+            callback(result[0]);
+        })
+        .catch(function(err) {
+            callback(err);
+        });
 }
 /**
  * Get specific user from data base.
  * @return callback function
  */
 module.exports.getUser = function (id, callback) {
-
-    connection.query('SELECT * FROM users WHERE idUser=?',id, function(err, results){
-        callback(results,err)
-    });
+    pool.execute('SELECT * FROM users WHERE idUser=?',[id])
+        .then(result =>{
+            callback(result[0][0]);
+        })
+        .catch(function(err) {
+            callback(err);
+        });
 }
 /**
  * Get user by email from data base.
  * @return callback function
  */
 module.exports.getUserByMail = function (mail, callback) {
-
-    connection.query('SELECT * FROM users WHERE email=?',mail, function(err, results){
-        callback(results[0],err)
-    });
+    pool.execute('SELECT * FROM users WHERE email=?',[mail])
+        .then(result =>{
+            callback(result[0][0]);
+        })
+        .catch(function(err) {
+            callback(err);
+        });
 }
 /**
  * Get specific user info from data base.
  * @return callback function
  */
 module.exports.getUserInfoId = function (id, callback) {
-    connection.query('SELECT idUserInfo FROM users WHERE idUser=?',id,function(err, results){
-        callback(results, err)
-    });
+
+    pool.execute('SELECT idUserInfo FROM users WHERE idUser=?',[id])
+        .then(result =>{
+            callback(result[0][0]);
+        })
+        .catch(function(err) {
+            callback(err);
+        });
+
 }
 /**
  * Get specific user photo from data base.
  * @return callback function
  */
 module.exports.getUserPhoto = function (id, callback) {
-    connection.query('SELECT photo FROM users WHERE idUser=?',id,function(err, results){
-        callback(results[0], err)
-    });
+    pool.execute('SELECT photo FROM users WHERE idUser=?',[id])
+        .then(result =>{
+            callback(result[0][0]);
+        })
+        .catch(function(err) {
+            callback(err);
+        });
 }
 /**
  * Script function.
@@ -113,8 +133,11 @@ module.exports.getUserPhoto = function (id, callback) {
  */
 function completeScript(script,data) {
 
-    connection.query(script,data, function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+    pool.execute(script,data)
+        .then(result =>{
+            console.log(result[0][0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }

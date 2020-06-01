@@ -1,4 +1,4 @@
-const connection = require("../config/Connection").connection
+const pool = require("../config/Connection").pool
 const course = require('./Course')
 
 class TaskForm{
@@ -38,10 +38,13 @@ module.exports = class Task {
 module.exports.addTask = function (task) {
     const sql = `INSERT INTO tasks(idtask, deadline, text,progress, studentId,courseId) VALUES(?,?,?,?,?)`;
 
-    connection.query(sql,[task.id,task.deadline,task.text,task.progress,task.studentId,task.courseId], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+    pool.execute(sql,[task.id,task.deadline,task.text,task.progress,task.studentId,task.courseId])
+        .then(result =>{
+            console.log(result[0][0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit task deadline in data base.
@@ -49,10 +52,14 @@ module.exports.addTask = function (task) {
  */
 module.exports.editTaskDeadline = function (newDeadline, id) {
     const script = 'UPDATE tasks SET deadline=? WHERE idtask=?'
-    connection.query(script,[newDeadline, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script,[newDeadline, id])
+        .then(result =>{
+            console.log(result[0][0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit task text in data base.
@@ -60,10 +67,14 @@ module.exports.editTaskDeadline = function (newDeadline, id) {
  */
 module.exports.editTaskText = function (newText, id) {
     const script = 'UPDATE tasks SET text=? WHERE idtask=?'
-    connection.query(script,[newText, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script,[newText, id])
+        .then(result =>{
+            console.log(result[0][0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Edit task deadline in data base.
@@ -71,28 +82,51 @@ module.exports.editTaskText = function (newText, id) {
  */
 module.exports.editTaskDeadline = function (progress, id) {
     const script = 'UPDATE tasks SET progress=? WHERE idtask=?'
-    connection.query(script,[progress, id], function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute(script,[progress, id])
+        .then(result =>{
+            console.log(result[0][0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Get student's task from data base.
  * @return callback function
  */
 module.exports.getTasksForStudent = function (studentId, callback) {
-    connection.query('SELECT * FROM  tasks WHERE studentId=?',studentId,function(err, results){
-        callback(results, err)
-    });
+
+
+    pool.execute('SELECT * FROM users_info WHERE iduserInfo=?', id)
+        .then(result =>{
+            callback(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+
+    pool.getConnection(function (err,connection) {
+        if (err) console.log(err);
+        connection.query('SELECT * FROM  tasks WHERE studentId=?',studentId,function(err, results){
+            callback(results, err)
+        });
+
+    })
 }
 /**
  * Get all tasks by course from data base.
  * @return callback function
  */
 module.exports.getAllTasksByCourse = function (courseId, callback) {
-    connection.query('SELECT * FROM  tasks WHERE courseId=?',courseId,function(err, results){
-        callback(results[0], err)
-    });
+
+    pool.execute('SELECT * FROM  tasks WHERE courseId=?', courseId)
+        .then(result =>{
+            callback(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 /**
  * Delete task from data base.
@@ -100,23 +134,36 @@ module.exports.getAllTasksByCourse = function (courseId, callback) {
  */
 
 function getAllDoneTasksForStudent(studentId, callback) {
-    connection.query('SELECT * FROM  tasks WHERE studentId=? AND progress=1',studentId,function(err, results){
-        callback(results, err)
-    });
+
+    pool.execute('SELECT * FROM  tasks WHERE studentId=? AND progress=1', [studentId])
+        .then(result =>{
+            callback(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 
 function getUnfulfilledTasksForUser(studentId, callback){
-    connection.query('SELECT * FROM  tasks WHERE studentId=? AND progress=0',studentId,function(err, results){
-        callback(results, err)
-    });
+
+    pool.execute('SELECT * FROM  tasks WHERE studentId=? AND progress=0', [studentId])
+        .then(result =>{
+            callback(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 
 module.exports.deleteTask = function (id) {
-    const sql = 'DELETE FROM tasks WHERE idtask=?'
-    connection.query(sql,id, function(err, results) {
-        if(err) throw err;
-        console.log(results);
-    });
+
+    pool.execute('DELETE FROM tasks WHERE idtask=?', [id])
+        .then(result =>{
+            console.log(result[0]);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 }
 
 module.exports.makeTableWithDoneTasks = function(studentId,callback){
